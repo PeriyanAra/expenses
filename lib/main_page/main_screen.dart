@@ -1,5 +1,6 @@
 import 'package:expenses/main_page/bottom_sheent_content.dart';
 import 'package:expenses/main_page/main_tab_bar/main_tab.dart';
+import 'package:expenses/theme/export.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatelessWidget {
@@ -11,7 +12,9 @@ class MainScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: secondaryColor,
       appBar: AppBar(
+        backgroundColor: primaryColor,
         title: Text(
           'Spending',
         ),

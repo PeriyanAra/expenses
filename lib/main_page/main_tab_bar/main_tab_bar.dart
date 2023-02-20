@@ -1,9 +1,11 @@
+import 'package:expenses/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class MainTabBar extends StatelessWidget {
   final TabController tabController;
   final double width;
   final double height;
+
   const MainTabBar({
     Key? key,
     required this.tabController,
@@ -13,13 +15,14 @@ class MainTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       height: height * .11,
       width: width,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          color: Colors.grey, borderRadius: BorderRadius.circular(30)),
+        color: Colors.grey,
+        borderRadius: BorderRadius.circular(30),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -31,12 +34,11 @@ class MainTabBar extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: tabController.index == 0
-                    ? Colors.grey
-                    : Colors.transparent,
+                color:
+                    tabController.index == 0 ? Colors.grey : transparent,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child:Text('List')
+              child: Text('List'),
             ),
           ),
           GestureDetector(
@@ -45,14 +47,12 @@ class MainTabBar extends StatelessWidget {
             },
             child: Container(
               padding: EdgeInsets.all(10.0),
-            
               decoration: BoxDecoration(
-                color: tabController.index == 1
-                     ? Colors.grey
-                    : Colors.transparent,
+                color:
+                    tabController.index == 1 ? Colors.grey : Colors.transparent,
                 borderRadius: BorderRadius.circular(30),
               ),
-               child:Text('List1')
+              child: Text('List1'),
             ),
           ),
           GestureDetector(
@@ -61,14 +61,12 @@ class MainTabBar extends StatelessWidget {
             },
             child: Container(
               padding: EdgeInsets.all(10.0),
-           
               decoration: BoxDecoration(
-                color: tabController.index == 2
-                     ? Colors.grey
-                    : Colors.transparent,
+                color:
+                    tabController.index == 2 ? Colors.grey : Colors.transparent,
                 borderRadius: BorderRadius.circular(30),
               ),
-             child:Text('List2'),
+              child: Text('List2'),
             ),
           ),
           GestureDetector(
@@ -77,14 +75,12 @@ class MainTabBar extends StatelessWidget {
             },
             child: Container(
               padding: EdgeInsets.all(10.0),
-            
               decoration: BoxDecoration(
-                color: tabController.index == 3
-                     ? Colors.grey
-                    : Colors.transparent,
+                color:
+                    tabController.index == 3 ? Colors.grey : Colors.transparent,
                 borderRadius: BorderRadius.circular(30),
               ),
-             child:Text('List3'),
+              child: Text('List3'),
             ),
           ),
         ],

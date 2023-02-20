@@ -1,12 +1,11 @@
 import 'package:expenses/main_page/main_tab_bar/list_tab.dart';
 import 'package:expenses/main_page/main_tab_bar/main_tab_bar.dart';
+import 'package:expenses/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class MainTab extends StatefulWidget {
-
   const MainTab({
     Key? key,
-   
   }) : super(key: key);
 
   @override
@@ -32,27 +31,39 @@ class _MainTabState extends State<MainTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-      final screenWidth = MediaQuery.of(context).size.width;
-      final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
-
-    return SizedBox(
+    return Container(
+      color: containerColor,
       width: screenWidth,
-      height: screenHeight*.8,
+      height: screenHeight / 2,
       child: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-           MainTabBar(tabController: _tabController, width: screenWidth, height: screenHeight*.4,),
-           const SizedBox(height: 30,),
+            MainTabBar(
+              tabController: _tabController,
+              width: screenWidth,
+              height: screenHeight * .4,
+            ),
+            const SizedBox(
+              height: 30,
+            ),
             Expanded(
               child: TabBarView(
                 controller: _tabController,
                 children: [
                   ListTab(),
-                  Container(color: Colors.red,),
-                  Container(color: Colors.black,),
-                  Container(color: Colors.yellow,),
+                  Container(
+                    color: Colors.red,
+                  ),
+                  Container(
+                    color: Colors.black,
+                  ),
+                  Container(
+                    color: Colors.yellow,
+                  ),
                 ],
               ),
             ),
