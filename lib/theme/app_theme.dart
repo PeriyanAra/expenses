@@ -1,8 +1,7 @@
-import 'package:expenses/theme/app_colors.dart';
-import 'package:expenses/theme/app_fonts.dart';
+import 'package:expenses/theme/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
- 
+
 
 final ThemeData appTheme = ThemeData(
   fontFamily: mainFont,
