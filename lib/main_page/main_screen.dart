@@ -12,20 +12,21 @@ class MainScreen extends StatelessWidget {
           'spending',
         ),
         actions: [
-          IconButton(onPressed: () {}, icon:
-          Container(
-          
-          
-           decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-            40,
-          ),
-          border: Border.all(
-            width: 2,
-            color: Color(0x1F77839A) ,
-          ),
-        ),
-        child: Icon(Icons.add),),)
+          IconButton(
+            onPressed: () {},
+            icon: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                  40,
+                ),
+                border: Border.all(
+                  width: 2,
+                  color: Color(0x1F77839A),
+                ),
+              ),
+              child: Icon(Icons.add),
+            ),
+          )
         ],
       ),
     ));
