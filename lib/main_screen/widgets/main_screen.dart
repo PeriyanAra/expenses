@@ -3,6 +3,7 @@ import 'package:expenses/main_screen/enums/expense_category.dart';
 import 'package:expenses/main_screen/models/expense_view_model.dart';
 import 'package:expenses/main_screen/widgets/category_dropdown_button.dart';
 import 'package:expenses/main_screen/widgets/filter_list.dart';
+import 'package:expenses/main_screen/widgets/date_picker.dart';
 import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab.dart';
 import 'package:expenses/theme/export.dart';
 import 'package:flutter/material.dart';
@@ -16,19 +17,19 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  
   @override
   Widget build(BuildContext context) {
     final TextEditingController expenseName = TextEditingController();
     final TextEditingController expenseAmount = TextEditingController();
     String expenseCategory = 'food';
+    DateTime expenseDate = DateTime.now();
 
     return Scaffold(
       backgroundColor: secondaryColor,
       appBar: AppBar(
         backgroundColor: primaryColor,
         title: Text(
-          'Spending',
+          'Expenses',
         ),
         actions: [
           IconButton(
@@ -50,7 +51,7 @@ class _MainScreenState extends State<MainScreen> {
                     textAlign: TextAlign.center,
                   ),
                   content: SizedBox(
-                    height: 300,
+                    height: 320,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -118,6 +119,13 @@ class _MainScreenState extends State<MainScreen> {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 14),
+                        DatePickerScreen(
+                          onSelectDate: (date) {
+                            expenseDate = date;
+                          },
+                          restorationId: 'main',
+                        )
                       ],
                     ),
                   ),
@@ -142,7 +150,7 @@ class _MainScreenState extends State<MainScreen> {
                                     category: ExpenseCategory.values.firstWhere(
                                         (element) =>
                                             element.name == expenseCategory),
-                                    date: DateTime.now(),
+                                    date: expenseDate,
                                   ),
                                 ),
                               );
@@ -181,7 +189,7 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0),
-            child: FilterList(),  
+            child: FilterList(),
           ),
           MainTab(),
         ],
