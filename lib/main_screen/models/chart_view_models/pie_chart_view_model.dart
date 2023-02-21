@@ -8,18 +8,15 @@ part 'pie_chart_view_model.freezed.dart';
 @freezed
 class PieChartViewModel with _$PieChartViewModel {
   const factory PieChartViewModel({
-    required double totalAmount,
-    required List<PieChartViewModelItemViewModel> items,
+    required List<PieChartItemViewModel> items,
   }) = _PieChartViewModel;
 
   const PieChartViewModel._();
 
-  PieChartViewModel fromExpenses(
+  factory PieChartViewModel.fromExpenses(
     List<ExpenseViewModel> expenses,
   ) {
-    List<PieChartViewModelItemViewModel> pieChartItems = [];
-
-    double totalAmount = 0.0;
+    List<PieChartItemViewModel> pieChartItems = [];
 
     ExpenseCategory.values.forEach((category) {
       double amount = 0.0;
@@ -30,19 +27,16 @@ class PieChartViewModel with _$PieChartViewModel {
         }
       });
 
-      final pieChartItem = PieChartViewModelItemViewModel(
+      final pieChartItem = PieChartItemViewModel(
         category: category,
         value: amount,
       );
-
-      totalAmount += amount;
 
       pieChartItems.add(pieChartItem);
     });
 
     return PieChartViewModel(
       items: pieChartItems,
-      totalAmount: totalAmount,
     );
   }
 }
