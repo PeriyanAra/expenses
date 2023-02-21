@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:expenses/main_screen/bloc/main_screen_bloc.dart';
 import 'package:expenses/main_screen/enums/expense_category.dart';
 import 'package:expenses/main_screen/models/expense_view_model.dart';
@@ -141,15 +143,20 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                     TextButton(
                       onPressed: () {
+                        final String id =
+                            "${DateTime.now()}${Random().nextInt(1000)}";
+
                         if (expenseAmount.text.isNotEmpty)
                           context.read<MainScreenBloc>().add(
                                 MainScreenEvent.addExpense(
                                   expenseViewModel: ExpenseViewModel(
+                                    id: id,
                                     name: expenseName.text,
                                     amount: double.parse(expenseAmount.text),
                                     category: ExpenseCategory.values.firstWhere(
-                                        (element) =>
-                                            element.name == expenseCategory),
+                                      (element) =>
+                                          element.name == expenseCategory,
+                                    ),
                                     date: expenseDate,
                                   ),
                                 ),
