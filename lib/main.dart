@@ -1,5 +1,7 @@
+import 'package:expenses/main_screen/bloc/main_screen_bloc.dart';
 import 'package:expenses/main_screen/widgets/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,8 +12,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MainScreen(),
+    return BlocProvider(
+      create: (context) => MainScreenBloc(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: MainScreen(),
+      ),
     );
   }
 }
