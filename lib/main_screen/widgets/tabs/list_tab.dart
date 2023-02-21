@@ -29,7 +29,7 @@ class _ListTabState extends State<ListTab> {
                   borderRadius: BorderRadius.circular(20),
                   color: white.withOpacity(0.2),
                 ),
-                padding: EdgeInsets.all( 10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Text(
                   expense.date.convertDateToddMMyyyy(),
                   style: TextStyle(color: primaryTextColor),
@@ -37,13 +37,14 @@ class _ListTabState extends State<ListTab> {
               ),
             } else if (expense.date !=
                 mockMainScreenViewModel.expenses[index - 1].date) ...{
-                  SizedBox(height: 15.0,),
-             Container(
+              SizedBox(
+                height: 15.0,
+              ),
+              Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: white.withOpacity(0.2),
                 ),
-            
                 padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
                 child: Text(
                   expense.date.convertDateToddMMyyyy(),
@@ -61,7 +62,7 @@ class _ListTabState extends State<ListTab> {
                 color: secondaryColor,
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
               ),
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 13),
               child: Column(
                 children: [
                   Row(
@@ -87,16 +88,23 @@ class _ListTabState extends State<ListTab> {
                       Text(
                         '${expense.amount}\$',
                         style: appTheme.textTheme.body,
-                      )
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.delete,
+                          color: containerColor,
+                        ),
+                      ),
                     ],
                   )
                 ],
               ),
             ),
-            if(index ==  mockMainScreenViewModel.expenses.length -1)...{
-             SizedBox(
-              height:MediaQuery.of(context).padding.bottom+15,
-            ),
+            if (index == mockMainScreenViewModel.expenses.length - 1) ...{
+              SizedBox(
+                height: MediaQuery.of(context).padding.bottom + 15,
+              ),
             }
           ],
         );
