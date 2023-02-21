@@ -15,8 +15,9 @@ List<String> list = [
   'transportation',
 ];
 
+String dropdownValue = list.first;
+
 class _CategoryDropdownButtonState extends State<CategoryDropdownButton> {
-  String dropdownValue = list.first;
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
@@ -34,8 +35,8 @@ class _CategoryDropdownButtonState extends State<CategoryDropdownButton> {
       onChanged: (String? value) {
         setState(() {
           dropdownValue = value!;
-          widget.onItemSelected(value);
         });
+        widget.onItemSelected(value);
       },
       items: list.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(

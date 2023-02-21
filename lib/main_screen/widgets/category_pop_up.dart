@@ -23,7 +23,7 @@ class CategoryPopUp extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
       content: SizedBox(
-        height: 150,
+        height: 170,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,11 +42,10 @@ class CategoryPopUp extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.center,
                   width: MediaQuery.of(context).size.width * .7,
-                  height: MediaQuery.of(context).size.height * .05,
+                  height: 40,
                   decoration: BoxDecoration(
-                  color: primaryColor,
-                  borderRadius: BorderRadius.circular(20.0)
-                  ),
+                      color: primaryColor,
+                      borderRadius: BorderRadius.circular(20.0)),
                   child: Text(
                     ExpenseCategory.values[index].name,
                     style: TextStyle(color: primaryTextColor),
