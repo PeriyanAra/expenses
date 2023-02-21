@@ -22,7 +22,7 @@ class _ListTabState extends State<ListTab> {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             itemCount: state.mainScreenViewModel.expenses.length,
             itemBuilder: (context, index) {
-              final expense =  state.mainScreenViewModel.expenses[index];
+              final expense = state.mainScreenViewModel.expenses[index];
 
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -37,17 +37,15 @@ class _ListTabState extends State<ListTab> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Text(
-                          expense.date
-                              .convertDateToddMMyyyy(),
+                          expense.date.convertDateToddMMyyyy(),
                           style: TextStyle(color: primaryTextColor),
                         ),
                       ),
                     ),
-                  } else if (expense.date.month !=
-                     expense.date
-                          .month) ...{
+                  } else if (expense.date !=
+                      state.mainScreenViewModel.expenses[index - 1].date) ...{
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 15.0),
+                      padding: EdgeInsets.symmetric(vertical: 10.0),
                       child: Container(
                         padding: EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
@@ -55,8 +53,7 @@ class _ListTabState extends State<ListTab> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Text(
-                          expense.date
-                              .convertDateToddMMyyyy(),
+                          expense.date.convertDateToddMMyyyy(),
                           style: TextStyle(color: primaryTextColor),
                         ),
                       ),
@@ -85,10 +82,9 @@ class _ListTabState extends State<ListTab> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width * .6,
+                                  width: MediaQuery.of(context).size.width * .5,
                                   child: Text(
-                                    expense
-                                        .name,
+                                    expense.name,
                                     style: appTheme.textTheme.title1,
                                     overflow: TextOverflow.clip,
                                   ),
@@ -96,8 +92,7 @@ class _ListTabState extends State<ListTab> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5.0),
                                   child: Text(
-                                    expense
-                                        .category.name,
+                                    expense.category.name,
                                     style: appTheme.textTheme.subhead.copyWith(
                                         color:
                                             primaryTextColor.withOpacity(0.4)),

@@ -38,145 +38,147 @@ class _MainScreenState extends State<MainScreen> {
             onPressed: () {
               showDialog(
                 context: context,
-                builder: (context) => AlertDialog(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    side: BorderSide(
-                      color: secondaryTextColor,
+                builder: (context) => SingleChildScrollView(
+                  child: AlertDialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      side: BorderSide(
+                        color: secondaryTextColor,
+                      ),
                     ),
-                  ),
-                  backgroundColor: secondaryColor,
-                  title: Text(
-                    'Add expense',
-                    style: appTheme.textTheme.title2
-                        .copyWith(color: secondaryTextColor),
-                    textAlign: TextAlign.center,
-                  ),
-                  content: SizedBox(
-                    height: 320,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Add expense category',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: secondaryTextColor,
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        CategoryDropdownButton(
-                          onItemSelected: (item) {
-                            expenseCategory = item ?? '';
-                          },
-                        ),
-                        const SizedBox(height: 14),
-                        const Text(
-                          'Add expense name',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: secondaryTextColor,
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        TextField(
-                          textInputAction: TextInputAction.next,
-                          autofocus: true,
-                          controller: expenseName,
-                          style: const TextStyle(color: secondaryTextColor),
-                          decoration: const InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: primaryColor),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 2, color: secondaryTextColor),
+                    backgroundColor: secondaryColor,
+                    title: Text(
+                      'Add expense',
+                      style: appTheme.textTheme.title2
+                          .copyWith(color: secondaryTextColor),
+                      textAlign: TextAlign.center,
+                    ),
+                    content: SizedBox(
+                      height: 320,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Add expense category',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: secondaryTextColor,
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 14),
-                        const Text(
-                          'Add expense amount',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: secondaryTextColor,
+                          const SizedBox(height: 5),
+                          CategoryDropdownButton(
+                            onItemSelected: (item) {
+                              expenseCategory = item ?? '';
+                            },
                           ),
-                        ),
-                        const SizedBox(height: 5),
-                        TextField(
-                          keyboardType: TextInputType.number,
-                          textInputAction: TextInputAction.next,
-                          controller: expenseAmount,
-                          autofocus: true,
-                          style: const TextStyle(color: secondaryTextColor),
-                          decoration: const InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: primaryColor),
+                          const SizedBox(height: 14),
+                          const Text(
+                            'Add expense name',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: secondaryTextColor,
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                width: 2,
-                                color: secondaryTextColor,
+                          ),
+                          const SizedBox(height: 5),
+                          TextField(
+                            textInputAction: TextInputAction.next,
+                            autofocus: true,
+                            controller: expenseName,
+                            style: const TextStyle(color: secondaryTextColor),
+                            decoration: const InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: primaryColor),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 2, color: secondaryTextColor),
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 14),
-                        DatePickerScreen(
-                          onSelectDate: (date) {
-                            expenseDate = date;
-                          },
-                          restorationId: 'main',
-                        )
-                      ],
-                    ),
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, 'Cancel'),
-                      child: const Text(
-                        'Cancel',
-                        style: TextStyle(
-                          color: secondaryTextColor,
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        final String id =
-                            "${DateTime.now()}${Random().nextInt(1000)}";
-
-                        if (expenseAmount.text.isNotEmpty && expenseName.text.isNotEmpty)
-                          context.read<MainScreenBloc>().add(
-                                MainScreenEvent.addExpense(
-                                  expenseViewModel: ExpenseViewModel(
-                                    id: id,
-                                    name: expenseName.text,
-                                    amount: double.parse(expenseAmount.text),
-                                    category: ExpenseCategory.values.firstWhere(
-                                      (element) =>
-                                          element.name == expenseCategory,
-                                    ),
-                                    date: expenseDate,
-                                  ),
+                          const SizedBox(height: 14),
+                          const Text(
+                            'Add expense amount',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: secondaryTextColor,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          TextField(
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next,
+                            controller: expenseAmount,
+                            autofocus: true,
+                            style: const TextStyle(color: secondaryTextColor),
+                            decoration: const InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: primaryColor),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  width: 2,
+                                  color: secondaryTextColor,
                                 ),
-                              );
-                        if (expenseName.text.isNotEmpty && expenseAmount.text.isNotEmpty)
-                        {
-                           Navigator.pop(context, 'OK');
-                        expenseName.clear();
-                        expenseAmount.clear();
-                        }
-                         
-                      },
-                      child: const Text(
-                        'OK',
-                        style: TextStyle(
-                          color: secondaryTextColor,
-                        ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 14),
+                          DatePickerScreen(
+                            onSelectDate: (date) {
+                              expenseDate = date;
+                            },
+                            restorationId: 'main',
+                          )
+                        ],
                       ),
                     ),
-                  ],
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Cancel'),
+                        child: const Text(
+                          'Cancel',
+                          style: TextStyle(
+                            color: secondaryTextColor,
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          final String id =
+                              "${DateTime.now()}${Random().nextInt(1000)}";
+                
+                          if (expenseAmount.text.isNotEmpty && expenseName.text.isNotEmpty)
+                            context.read<MainScreenBloc>().add(
+                                  MainScreenEvent.addExpense(
+                                    expenseViewModel: ExpenseViewModel(
+                                      id: id,
+                                      name: expenseName.text,
+                                      amount: double.parse(expenseAmount.text),
+                                      category: ExpenseCategory.values.firstWhere(
+                                        (element) =>
+                                            element.name == expenseCategory,
+                                      ),
+                                      date: expenseDate,
+                                    ),
+                                  ),
+                                );
+                          if (expenseName.text.isNotEmpty && expenseAmount.text.isNotEmpty)
+                          {
+                             Navigator.pop(context, 'OK');
+                          expenseName.clear();
+                          expenseAmount.clear();
+                          }
+                           
+                        },
+                        child: const Text(
+                          'OK',
+                          style: TextStyle(
+                            color: secondaryTextColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
