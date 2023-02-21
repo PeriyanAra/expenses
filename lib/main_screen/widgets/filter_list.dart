@@ -1,5 +1,4 @@
 import 'package:expenses/main_screen/bloc/main_screen_bloc.dart';
-import 'package:expenses/main_screen/enums/expense_category.dart';
 import 'package:expenses/main_screen/enums/filter_param.dart';
 import 'package:expenses/main_screen/widgets/category_pop_up.dart';
 import 'package:flutter/material.dart';
