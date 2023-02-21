@@ -18,21 +18,21 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
             mainScreenViewModel: MainScreenViewModel(expenses: []),
           ),
         ) {
-    on<AddExpenseEvent>(_addExpenseEvent);
+    on<AddExpenseEvent>(_handleAddExpenseEvent);
     on<RemoveExpenseEvent>(_handleRemoveExpenseEvent);
     on<FilterExpenseByCategoryEvent>(_handleFilterExpenseByCategoryEvent);
     on<FilterExpenseByDateTimeEvent>(_handleFilterExpenseByDateTimeEvent);
   }
 
-  _addExpenseEvent(
+  void _handleAddExpenseEvent(
     AddExpenseEvent event,
     Emitter emit,
   ) {
-    List<ExpenseViewModel> expenses = [
-      ...state.mainScreenViewModel.expenses
-    ];
+    List<ExpenseViewModel> expenses = [...state.mainScreenViewModel.expenses];
 
     expenses.add(event.expenseViewModel);
+
+    allExpenses.add(event.expenseViewModel);
 
     emit(
       MainScreenLoadedState(
@@ -47,20 +47,11 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     RemoveExpenseEvent event,
     Emitter<MainScreenState> emit,
   ) {
-    var expenses = <ExpenseViewModel>[];
+    var expenses = <ExpenseViewModel>[...state.mainScreenViewModel.expenses];
 
-    if (state is MainScreenLoadedState) {
-      final currentState = state as MainScreenLoadedState;
-
-
-      expenses.addAll(
-        state.mainScreenViewModel.expenses,
-      );
-
-      expenses.removeWhere(
-        (element) => element.id == event.id,
-      );
-    }
+    expenses.removeWhere(
+      (element) => element.id == event.id,
+    );
 
     allExpenses.removeWhere(
       (element) => element.id == event.id,
@@ -81,17 +72,13 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   ) {
     var expenses = <ExpenseViewModel>[];
 
-    if (state is MainScreenLoadedState) {
-      final currentState = state as MainScreenLoadedState;
-
-      allExpenses.forEach(
-        (element) {
-          if (element.category == event.expenseCategory) {
-            expenses.add(element);
-          }
-        },
-      );
-    }
+    allExpenses.forEach(
+      (element) {
+        if (element.category == event.expenseCategory) {
+          expenses.add(element);
+        }
+      },
+    );
 
     emit(
       MainScreenState.loaded(
@@ -107,37 +94,30 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     Emitter<MainScreenState> emit,
   ) {
     var expenses = <ExpenseViewModel>[];
-
-    if (state is MainScreenLoadedState) {
-      final currentState = state as MainScreenLoadedState;
-
-      if (event.filterParam == FilterParam.today) {
-        final currentDate = DateTime.now();
-
-        allExpenses.forEach(
-          (element) {
-            if (element.date.day == currentDate.day &&
-                element.date.month == currentDate.month &&
-                element.date.year == currentDate.year) {
-              expenses.add(element);
-            }
-          },
-        );
-      } else if (event.filterParam == FilterParam.thisWeek) {
-        final currentDate = DateTime.now();
-
-        allExpenses.forEach(
-          (element) {
-            if (element.date.weekday == currentDate.weekday &&
-                element.date.month == currentDate.month &&
-                element.date.year == currentDate.year) {
-              expenses.add(element);
-            }
-          },
-        );
-      } else {
-        expenses.addAll(allExpenses);
-      }
+    final currentDate = DateTime.now();
+    
+    if (event.filterParam == FilterParam.today) {
+      allExpenses.forEach(
+        (element) {
+          if (element.date.day == currentDate.day &&
+              element.date.month == currentDate.month &&
+              element.date.year == currentDate.year) {
+            expenses.add(element);
+          }
+        },
+      );
+    } else if (event.filterParam == FilterParam.thisWeek) {
+      allExpenses.forEach(
+        (element) {
+          if (element.date.weekday == currentDate.weekday &&
+              element.date.month == currentDate.month &&
+              element.date.year == currentDate.year) {
+            expenses.add(element);
+          }
+        },
+      );
+    } else {
+      expenses.addAll(allExpenses);
     }
 
     emit(

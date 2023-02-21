@@ -130,7 +130,8 @@ class MainScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        final String id = "${DateTime.now()}${Random().nextInt(1000)}";
+                        final String id =
+                            "${DateTime.now()}${Random().nextInt(1000)}";
 
                         if (expenseAmount.text.isNotEmpty)
                           context.read<MainScreenBloc>().add(
@@ -140,8 +141,9 @@ class MainScreen extends StatelessWidget {
                                     name: expenseName.text,
                                     amount: double.parse(expenseAmount.text),
                                     category: ExpenseCategory.values.firstWhere(
-                                        (element) =>
-                                            element.name == expenseCategory),
+                                      (element) =>
+                                          element.name == expenseCategory,
+                                    ),
                                     date: DateTime.now(),
                                   ),
                                 ),
