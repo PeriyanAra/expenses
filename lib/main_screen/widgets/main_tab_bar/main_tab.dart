@@ -1,8 +1,6 @@
-import 'package:expenses/main_screen/enums/expense_category.dart';
-import 'package:expenses/main_screen/models/chart_view_models/pie_chart_item_view_model.dart';
-import 'package:expenses/main_screen/models/chart_view_models/pie_chart_view_model.dart';
+import 'package:expenses/main_screen/mocks/pie_chart_view_model.dart';
 import 'package:expenses/main_screen/widgets/custom_pie_chart.dart';
-import 'package:expenses/main_screen/widgets/main_tab_bar/list_tab.dart';
+import 'package:expenses/main_screen/widgets/tabs/list_tab.dart';
 import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab_bar.dart';
 import 'package:expenses/theme/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -18,16 +16,7 @@ class MainTab extends StatefulWidget {
 
 class _MainTabState extends State<MainTab> with TickerProviderStateMixin {
   late TabController _tabController;
-  final PieChartViewModel _pieChartViewModel = PieChartViewModel(
-    items: [
-      PieChartItemViewModel(value: 4500, category: ExpenseCategory.food),
-      PieChartItemViewModel(value: 2000, category: ExpenseCategory.comunal),
-      PieChartItemViewModel(
-        value: 6830,
-        category: ExpenseCategory.transportation,
-      ),
-    ],
-  );
+  
 
   @override
   void initState() {
@@ -77,7 +66,7 @@ class _MainTabState extends State<MainTab> with TickerProviderStateMixin {
                   ),
                   Center(
                     child: CustomPieChart(
-                      pieChartViewModel: _pieChartViewModel,
+                      pieChartViewModel: pieChartViewModel,
                     ),
                   )
                 ],
