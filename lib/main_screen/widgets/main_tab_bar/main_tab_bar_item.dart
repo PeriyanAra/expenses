@@ -5,11 +5,13 @@ class MainTabBarItem extends StatelessWidget {
   final TabController tabController;
   final String tabBarName;
   final int index;
+  final double height;
   const MainTabBarItem({
     Key? key,
     required this.tabController,
     required this.tabBarName,
     required this.index,
+    required this.height,
   }) : super(key: key);
 
   @override
@@ -19,15 +21,16 @@ class MainTabBarItem extends StatelessWidget {
         tabController.animateTo(index);
       },
       child: Container(
-        constraints: BoxConstraints(minWidth: 80),
+        height: height * .11,
         padding: EdgeInsets.all(10.0),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: tabController.index == index
               ? white.withOpacity(0.2)
               : transparent,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(20),
         ),
+        constraints: BoxConstraints(minWidth: 80),
         child: Text(
           tabBarName,
           style: TextStyle(color: primaryTextColor),

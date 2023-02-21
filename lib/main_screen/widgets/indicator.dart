@@ -1,3 +1,4 @@
+import 'package:expenses/theme/export.dart';
 import 'package:flutter/material.dart';
 
 class Indicator extends StatelessWidget {
@@ -17,28 +18,31 @@ class Indicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
-            color: color,
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Row(
+        children: <Widget>[
+          Container(
+            width: size,
+            height: size,
+            decoration: BoxDecoration(
+              shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
+              color: color,
+            ),
           ),
-        ),
-        const SizedBox(
-          width: 4,
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: textColor,
+          const SizedBox(
+            width: 4,
           ),
-        )
-      ],
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: secondaryTextColor,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

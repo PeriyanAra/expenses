@@ -14,24 +14,25 @@ class MainTabBar extends StatelessWidget {
     required this.height,
   }) : super(key: key);
 
-  static final tabNames = ['List', 'LineChart', 'BarChart', 'PieChart'];
+  static final tabNames = ['List', 'BarChart', 'LineChart', 'PieChart'];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height * .11,
-      width: width,
-      alignment: Alignment.center,
+      padding: EdgeInsets.symmetric(vertical: 10.0),
       decoration: BoxDecoration(
         color: secondaryColor,
         borderRadius: BorderRadius.circular(30),
       ),
+      width: width,
+      alignment: Alignment.center,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(
           tabController.length,
           (index) {
             return MainTabBarItem(
+              height: height,
               index: index,
               tabController: tabController,
               tabBarName: tabNames[index],

@@ -10,3 +10,17 @@ extension DateTimeFormatterToString on DateTime {
     
   }
 }
+
+extension DateConvertToWeek on DateTime {
+  int get weekOfMonth {
+    var week = 0;
+    var date = this;
+
+    while (date.month == month) {
+      week++;
+      date = date.subtract(const Duration(days: 7));
+    }
+
+    return week;
+  }
+}
