@@ -2,26 +2,21 @@ import 'package:expenses/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CategoryDropdownButton extends StatefulWidget {
-  const CategoryDropdownButton({super.key});
+  const CategoryDropdownButton({super.key, required this.onItemSelected});
+  final Function(String?) onItemSelected;
 
   @override
   State<CategoryDropdownButton> createState() => _CategoryDropdownButtonState();
 }
 
-// List<ExpenseCategory> list = [
-//   ExpenseCategory.food,
-//   ExpenseCategory.comunal,
-//   ExpenseCategory.transportation,
-// ];
-
-List<String> listString = [
-  'Food',
-  'Communal',
-  'Transportation',
+List<String> list = [
+  'food',
+  'communal',
+  'transportation',
 ];
 
 class _CategoryDropdownButtonState extends State<CategoryDropdownButton> {
-  String dropdownValue = listString.first;
+  String dropdownValue = list.first;
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
@@ -39,9 +34,10 @@ class _CategoryDropdownButtonState extends State<CategoryDropdownButton> {
       onChanged: (String? value) {
         setState(() {
           dropdownValue = value!;
+          widget.onItemSelected(value);
         });
       },
-      items: listString.map<DropdownMenuItem<String>>((String value) {
+      items: list.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),

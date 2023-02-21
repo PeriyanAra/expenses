@@ -17,6 +17,7 @@ class MainScreen extends StatelessWidget {
 
     final TextEditingController expenseItemName = TextEditingController();
     final TextEditingController expenseItemAmount = TextEditingController();
+    String expenseItemCategory = '';
 
     return Scaffold(
       backgroundColor: secondaryColor,
@@ -57,7 +58,11 @@ class MainScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 5),
-                        CategoryDropdownButton(),
+                        CategoryDropdownButton(
+                          onItemSelected: (item) {
+                            expenseItemCategory = item ?? '';
+                          },
+                        ),
                         const SizedBox(height: 14),
                         const Text(
                           'Add item name',
@@ -131,7 +136,10 @@ class MainScreen extends StatelessWidget {
                                     name: expenseItemName.text,
                                     amount:
                                         double.parse(expenseItemAmount.text),
-                                    category: ExpenseCategory.food,
+                                    category: ExpenseCategory.values.firstWhere(
+                                        (element) =>
+                                            element.name ==
+                                            expenseItemCategory),
                                     date: DateTime.now(),
                                   ),
                                 ),
