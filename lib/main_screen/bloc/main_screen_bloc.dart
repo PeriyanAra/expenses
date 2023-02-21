@@ -11,10 +11,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   MainScreenBloc()
       : super(
           MainScreenState.initial(
-            mainScreenViewModel: MainScreenViewModel(
-              allAmount: 0,
-              expenses: [],
-            ),
+            mainScreenViewModel: MainScreenViewModel(expenses: []),
           ),
         ) {
     on<AddExpenseEvent>(_addExpenseEvent);
@@ -29,11 +26,10 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     ];
 
     expenseItems.add(event.expenseViewModel);
-    
+
     emit(
       MainScreenLoadedState(
         mainScreenViewModel: MainScreenViewModel(
-          allAmount: 0,
           expenses: expenseItems,
         ),
       ),

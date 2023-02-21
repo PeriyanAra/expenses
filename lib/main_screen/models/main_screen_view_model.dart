@@ -6,7 +6,6 @@ part 'main_screen_view_model.freezed.dart';
 @freezed
 class MainScreenViewModel with _$MainScreenViewModel {
   const factory MainScreenViewModel({
-    required double allAmount,
     required List<ExpenseViewModel> expenses,
   }) = _MainScreenViewModel;
 }
