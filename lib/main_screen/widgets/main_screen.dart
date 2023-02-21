@@ -13,7 +13,6 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
 
     final TextEditingController expenseItemName = TextEditingController();
     final TextEditingController expenseItemAmount = TextEditingController();
