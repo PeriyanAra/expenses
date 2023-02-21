@@ -8,8 +8,6 @@ import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab_bar.dart';
 import 'package:expenses/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-
-
 class MainTab extends StatefulWidget {
   const MainTab({
     Key? key,
@@ -21,7 +19,6 @@ class MainTab extends StatefulWidget {
 
 class _MainTabState extends State<MainTab> with TickerProviderStateMixin {
   late TabController _tabController;
-  
 
   @override
   void initState() {
@@ -42,44 +39,44 @@ class _MainTabState extends State<MainTab> with TickerProviderStateMixin {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Container(
-      color: containerColor,
-      width: screenWidth,
-      height: screenHeight / 2,
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            MainTabBar(
-              tabController: _tabController,
-              width: screenWidth,
-              height: screenHeight * .4,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  ListTab(),
-                  CustomBarChart(
-                    viewModel: BarChartViewModel.fromExpenses(
-                      expenses,
-                    ),
-                  ),
-                  Container(
-                    color: Colors.black,
-                  ),
-                  Center(
-                    child: CustomPieChart(
-                      pieChartViewModel: pieChartViewModel,
-                    ),
-                  )
-                ],
+    return Expanded(
+      child: Container(
+        color: primaryColor,
+        child: Padding(
+          padding: EdgeInsets.only(top: 16.0),
+          child: Column(
+            children: [
+              MainTabBar(
+                tabController: _tabController,
+                width: screenWidth,
+                height: screenHeight * .4,
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 30,
+              ),
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    ListTab(),
+                    CustomBarChart(
+                      viewModel: BarChartViewModel.fromExpenses(
+                        expenses,
+                      ),
+                    ),
+                    Container(
+                      color: Colors.black,
+                    ),
+                    Center(
+                      child: CustomPieChart(
+                        pieChartViewModel: pieChartViewModel,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
