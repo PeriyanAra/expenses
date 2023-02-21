@@ -26,6 +26,7 @@ class _CustomPieChartState extends State<CustomPieChart> {
     return AspectRatio(
       aspectRatio: 1.3,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           const SizedBox(
             height: 18,
@@ -98,6 +99,7 @@ class _CustomPieChartState extends State<CustomPieChart> {
         return PieChartSectionData(
             color: pieChartViewModel.category.toColor(),
             value: pieChartViewModel.value,
+            title: '',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
