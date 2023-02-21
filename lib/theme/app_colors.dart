@@ -15,3 +15,4 @@ const Color secondaryColor = Color(0xFF2C4260);
 const Color containerColor = Color(0xFFaaa4bd);
 const Color accentColor1 = Color(0xFF53FDD7);
 const Color accentColor2 = Color(0xFFFF5182);
+const Color accentColor3 = Color(0xFFffbe0b);

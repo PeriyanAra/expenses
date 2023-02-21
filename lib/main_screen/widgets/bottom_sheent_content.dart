@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BottomSheentContent extends StatefulWidget {
-  const BottomSheentContent({Key? key}) : super(key: key);
+class BottomSheetContent extends StatefulWidget {
+  const BottomSheetContent({Key? key}) : super(key: key);
 
   @override
-  State<BottomSheentContent> createState() => _BottomSheentContentState();
+  State<BottomSheetContent> createState() => _BottomSheetContentState();
 }
 
-class _BottomSheentContentState extends State<BottomSheentContent> {
+class _BottomSheetContentState extends State<BottomSheetContent> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;

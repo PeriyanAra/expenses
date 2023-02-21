@@ -1,5 +1,5 @@
-import 'package:expenses/main_page/main_tab_bar/list_tab.dart';
-import 'package:expenses/main_page/main_tab_bar/main_tab_bar.dart';
+import 'package:expenses/main_screen/widgets/main_tab_bar/list_tab.dart';
+import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab_bar.dart';
 import 'package:expenses/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
