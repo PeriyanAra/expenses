@@ -10,6 +10,11 @@ class MainScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
+    final TextEditingController expenseItemName = TextEditingController();
+    final TextEditingController expenseItemAmount = TextEditingController();
+    final TextEditingController expenseItemCategory = TextEditingController();
+    final TextEditingController expenseItemDate = TextEditingController();
+
     return Scaffold(
       backgroundColor: secondaryColor,
       appBar: AppBar(
@@ -19,7 +24,82 @@ class MainScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                context: context,
+                // backgroundColor: Colors.transparent,
+                builder: (context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    side: BorderSide(
+                      color: secondaryTextColor,
+                    ),
+                  ),
+                  backgroundColor: containerColor,
+                  title: Text(
+                    'Add expense',
+                    style: appTheme.textTheme.title2,
+                    textAlign: TextAlign.center,
+                  ),
+                  content: SizedBox(
+                    height: 250,
+                    child: Column(
+                      children: [
+                        TextField(
+                          textInputAction: TextInputAction.next,
+                          autofocus: true,
+                          style: const TextStyle(color: primaryColor),
+                          controller: expenseItemName,
+                          decoration: const InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: primaryColor),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                width: 2,
+                                color: secondaryTextColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 14),
+                        TextField(
+                          textInputAction: TextInputAction.next,
+                          autofocus: true,
+                          controller: expenseItemAmount,
+                          style: const TextStyle(color: primaryColor),
+                          decoration: const InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: primaryColor),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 2, color: secondaryTextColor),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 14),
+                        TextField(
+                          textInputAction: TextInputAction.next,
+                          controller: expenseItemCategory,
+                          autofocus: true,
+                          style: const TextStyle(color: primaryColor),
+                          decoration: const InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: primaryColor),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 2, color: secondaryTextColor),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
             icon: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
@@ -30,7 +110,7 @@ class MainScreen extends StatelessWidget {
                   color: Color(0x1F77839A),
                 ),
               ),
-              // child: Icon(Icons.add),
+              child: Icon(Icons.add),
             ),
           )
         ],
