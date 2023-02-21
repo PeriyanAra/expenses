@@ -28,9 +28,6 @@ class _CustomPieChartState extends State<CustomPieChart> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(
-            height: 18,
-          ),
           Expanded(
             child: AspectRatio(
               aspectRatio: 1,
@@ -61,7 +58,7 @@ class _CustomPieChartState extends State<CustomPieChart> {
             ),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: List.generate(
               widget.pieChartViewModel.items.length,
@@ -77,8 +74,8 @@ class _CustomPieChartState extends State<CustomPieChart> {
               },
             ),
           ),
-          const SizedBox(
-            width: 28,
+          SizedBox(
+            width: 15,
           ),
         ],
       ),
@@ -97,17 +94,17 @@ class _CustomPieChartState extends State<CustomPieChart> {
         final pieChartViewModel = widget.pieChartViewModel.items[i];
 
         return PieChartSectionData(
-            color: pieChartViewModel.category.toColor(),
-            value: pieChartViewModel.value,
-            title: '',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: secondaryTextColor,
-              shadows: shadows,
-            ),
-          );
+          color: pieChartViewModel.category.toColor(),
+          value: pieChartViewModel.value,
+          title: '',
+          radius: radius,
+          titleStyle: TextStyle(
+            fontSize: fontSize,
+            fontWeight: FontWeight.bold,
+            color: secondaryTextColor,
+            shadows: shadows,
+          ),
+        );
       },
     );
   }
