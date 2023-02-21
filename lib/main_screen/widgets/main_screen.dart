@@ -4,18 +4,23 @@ import 'package:expenses/main_screen/bloc/main_screen_bloc.dart';
 import 'package:expenses/main_screen/enums/expense_category.dart';
 import 'package:expenses/main_screen/models/expense_view_model.dart';
 import 'package:expenses/main_screen/widgets/category_dropdown_button.dart';
+import 'package:expenses/main_screen/widgets/filter_list.dart';
 import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab.dart';
 import 'package:expenses/theme/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
+  State<MainScreen> createState() => _MainScreenState();
+}
 
+class _MainScreenState extends State<MainScreen> {
+  
+  @override
+  Widget build(BuildContext context) {
     final TextEditingController expenseName = TextEditingController();
     final TextEditingController expenseAmount = TextEditingController();
     String expenseCategory = 'food';
@@ -181,43 +186,9 @@ class MainScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: screenHeight * .05,
-                alignment: Alignment.center,
-                child: Text(
-                  'All',
-                  style: TextStyle(color: primaryTextColor),
-                ),
-              ),
-              Container(
-                height: screenHeight * .05,
-                alignment: Alignment.center,
-                child: Text(
-                  'Today',
-                  style: TextStyle(color: primaryTextColor),
-                ),
-              ),
-              Container(
-                height: screenHeight * .05,
-                alignment: Alignment.center,
-                child: Text(
-                  'This Week',
-                  style: TextStyle(color: primaryTextColor),
-                ),
-              ),
-              Container(
-                height: screenHeight * .05,
-                alignment: Alignment.center,
-                child: Text(
-                  'Category',
-                  style: TextStyle(color: primaryTextColor),
-                ),
-              ),
-            ],
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.0),
+            child: FilterList(),  
           ),
           MainTab(),
         ],

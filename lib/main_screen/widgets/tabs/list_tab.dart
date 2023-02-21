@@ -24,8 +24,12 @@ class _ListTabState extends State<ListTab> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (index == 0) ...{
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10.0),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: white.withOpacity(0.2),
+                ),
+                padding: EdgeInsets.all( 10.0),
                 child: Text(
                   expense.date.convertDateToddMMyyyy(),
                   style: TextStyle(color: primaryTextColor),
@@ -33,8 +37,14 @@ class _ListTabState extends State<ListTab> {
               ),
             } else if (expense.date !=
                 mockMainScreenViewModel.expenses[index - 1].date) ...{
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 15.0),
+                  SizedBox(height: 15.0,),
+             Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: white.withOpacity(0.2),
+                ),
+            
+                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
                 child: Text(
                   expense.date.convertDateToddMMyyyy(),
                   style: TextStyle(color: primaryTextColor),
@@ -44,7 +54,7 @@ class _ListTabState extends State<ListTab> {
               SizedBox(),
             },
             SizedBox(
-              height: 10,
+              height: 15,
             ),
             Container(
               decoration: BoxDecoration(
@@ -83,6 +93,11 @@ class _ListTabState extends State<ListTab> {
                 ],
               ),
             ),
+            if(index ==  mockMainScreenViewModel.expenses.length -1)...{
+             SizedBox(
+              height:MediaQuery.of(context).padding.bottom+15,
+            ),
+            }
           ],
         );
       },
