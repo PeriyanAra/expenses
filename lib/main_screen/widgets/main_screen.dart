@@ -57,11 +57,12 @@ class _MainScreenState extends State<MainScreen> {
                     });
                   },
                   child: Container(
-                  width: screenWidth*.15,
-                  height: screenHeight*.04,
+                    width: screenWidth * .15,
+                    height: screenHeight * .04,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: index != 0 ? secondaryColor : primaryColor,
+                      color:
+                          index != 0 ? secondaryColor : white.withOpacity(0.2),
                     ),
                     alignment: Alignment.center,
                     child: Text(
@@ -77,11 +78,12 @@ class _MainScreenState extends State<MainScreen> {
                     });
                   },
                   child: Container(
-                   width: screenWidth*.17,
-                  height: screenHeight*.04,
+                    width: screenWidth * .17,
+                    height: screenHeight * .04,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: index != 1 ? secondaryColor : primaryColor,
+                      color:
+                          index != 1 ? secondaryColor : white.withOpacity(0.2),
                     ),
                     alignment: Alignment.center,
                     child: Text(
@@ -97,11 +99,12 @@ class _MainScreenState extends State<MainScreen> {
                     });
                   },
                   child: Container(
-                   width: screenWidth*.17,
-                  height: screenHeight*.04,
+                    width: screenWidth * .17,
+                    height: screenHeight * .04,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: index != 2 ? secondaryColor : primaryColor,
+                      color:
+                          index != 2 ? secondaryColor : white.withOpacity(0.2),
                     ),
                     alignment: Alignment.center,
                     child: Text(
@@ -117,12 +120,13 @@ class _MainScreenState extends State<MainScreen> {
                     });
                   },
                   child: Container(
-                   width: screenWidth*.17,
-                  height: screenHeight*.04,
+                    width: screenWidth * .17,
+                    height: screenHeight * .04,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: index != 3 ? secondaryColor : primaryColor,
+                      color:
+                          index != 3 ? secondaryColor : white.withOpacity(0.2),
                     ),
                     child: Text(
                       'Category',
