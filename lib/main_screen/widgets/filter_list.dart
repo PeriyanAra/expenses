@@ -34,7 +34,7 @@ class _FilterListState extends State<FilterList> {
             }
           },
           child: Container(
-            width: screenWidth * .17,
+            width: screenWidth * .19,
             height: screenHeight * .04,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
