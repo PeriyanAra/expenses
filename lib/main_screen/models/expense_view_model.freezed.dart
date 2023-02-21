@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ExpenseViewModel {
   String get name => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
   ExpenseCategory get category => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
@@ -33,7 +34,11 @@ abstract class $ExpenseViewModelCopyWith<$Res> {
       _$ExpenseViewModelCopyWithImpl<$Res, ExpenseViewModel>;
   @useResult
   $Res call(
-      {String name, double amount, ExpenseCategory category, DateTime date});
+      {String name,
+      String id,
+      double amount,
+      ExpenseCategory category,
+      DateTime date});
 }
 
 /// @nodoc
@@ -50,6 +55,7 @@ class _$ExpenseViewModelCopyWithImpl<$Res, $Val extends ExpenseViewModel>
   @override
   $Res call({
     Object? name = null,
+    Object? id = null,
     Object? amount = null,
     Object? category = null,
     Object? date = null,
@@ -58,6 +64,10 @@ class _$ExpenseViewModelCopyWithImpl<$Res, $Val extends ExpenseViewModel>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       amount: null == amount
           ? _value.amount
@@ -84,7 +94,11 @@ abstract class _$$_ExpenseViewModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name, double amount, ExpenseCategory category, DateTime date});
+      {String name,
+      String id,
+      double amount,
+      ExpenseCategory category,
+      DateTime date});
 }
 
 /// @nodoc
@@ -99,6 +113,7 @@ class __$$_ExpenseViewModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? id = null,
     Object? amount = null,
     Object? category = null,
     Object? date = null,
@@ -107,6 +122,10 @@ class __$$_ExpenseViewModelCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       amount: null == amount
           ? _value.amount
@@ -129,12 +148,15 @@ class __$$_ExpenseViewModelCopyWithImpl<$Res>
 class _$_ExpenseViewModel implements _ExpenseViewModel {
   const _$_ExpenseViewModel(
       {required this.name,
+      required this.id,
       required this.amount,
       required this.category,
       required this.date});
 
   @override
   final String name;
+  @override
+  final String id;
   @override
   final double amount;
   @override
@@ -144,7 +166,7 @@ class _$_ExpenseViewModel implements _ExpenseViewModel {
 
   @override
   String toString() {
-    return 'ExpenseViewModel(name: $name, amount: $amount, category: $category, date: $date)';
+    return 'ExpenseViewModel(name: $name, id: $id, amount: $amount, category: $category, date: $date)';
   }
 
   @override
@@ -153,6 +175,7 @@ class _$_ExpenseViewModel implements _ExpenseViewModel {
         (other.runtimeType == runtimeType &&
             other is _$_ExpenseViewModel &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.category, category) ||
                 other.category == category) &&
@@ -160,7 +183,8 @@ class _$_ExpenseViewModel implements _ExpenseViewModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, amount, category, date);
+  int get hashCode =>
+      Object.hash(runtimeType, name, id, amount, category, date);
 
   @JsonKey(ignore: true)
   @override
@@ -172,12 +196,15 @@ class _$_ExpenseViewModel implements _ExpenseViewModel {
 abstract class _ExpenseViewModel implements ExpenseViewModel {
   const factory _ExpenseViewModel(
       {required final String name,
+      required final String id,
       required final double amount,
       required final ExpenseCategory category,
       required final DateTime date}) = _$_ExpenseViewModel;
 
   @override
   String get name;
+  @override
+  String get id;
   @override
   double get amount;
   @override

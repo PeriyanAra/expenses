@@ -16,42 +16,62 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MainScreenEvent {
-  ExpenseViewModel get expenseViewModel => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
+    required TResult Function(FilterParam filterParam) filterExpenseByDateTime,
+    required TResult Function(ExpenseCategory expenseCategory)
+        filterExpenseByCategory,
+    required TResult Function(String id) removeExpense,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
+    TResult? Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult? Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
+    TResult? Function(String id)? removeExpense,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
+    TResult Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
+    TResult Function(String id)? removeExpense,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddExpenseEvent value) addExpense,
+    required TResult Function(FilterExpenseByDateTimeEvent value)
+        filterExpenseByDateTime,
+    required TResult Function(FilterExpenseByCategoryEvent value)
+        filterExpenseByCategory,
+    required TResult Function(RemoveExpenseEvent value) removeExpense,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddExpenseEvent value)? addExpense,
+    TResult? Function(FilterExpenseByDateTimeEvent value)?
+        filterExpenseByDateTime,
+    TResult? Function(FilterExpenseByCategoryEvent value)?
+        filterExpenseByCategory,
+    TResult? Function(RemoveExpenseEvent value)? removeExpense,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddExpenseEvent value)? addExpense,
+    TResult Function(FilterExpenseByDateTimeEvent value)?
+        filterExpenseByDateTime,
+    TResult Function(FilterExpenseByCategoryEvent value)?
+        filterExpenseByCategory,
+    TResult Function(RemoveExpenseEvent value)? removeExpense,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $MainScreenEventCopyWith<MainScreenEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,10 +80,6 @@ abstract class $MainScreenEventCopyWith<$Res> {
   factory $MainScreenEventCopyWith(
           MainScreenEvent value, $Res Function(MainScreenEvent) then) =
       _$MainScreenEventCopyWithImpl<$Res, MainScreenEvent>;
-  @useResult
-  $Res call({ExpenseViewModel expenseViewModel});
-
-  $ExpenseViewModelCopyWith<$Res> get expenseViewModel;
 }
 
 /// @nodoc
@@ -75,40 +91,16 @@ class _$MainScreenEventCopyWithImpl<$Res, $Val extends MainScreenEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? expenseViewModel = null,
-  }) {
-    return _then(_value.copyWith(
-      expenseViewModel: null == expenseViewModel
-          ? _value.expenseViewModel
-          : expenseViewModel // ignore: cast_nullable_to_non_nullable
-              as ExpenseViewModel,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ExpenseViewModelCopyWith<$Res> get expenseViewModel {
-    return $ExpenseViewModelCopyWith<$Res>(_value.expenseViewModel, (value) {
-      return _then(_value.copyWith(expenseViewModel: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$AddExpenseEventCopyWith<$Res>
-    implements $MainScreenEventCopyWith<$Res> {
+abstract class _$$AddExpenseEventCopyWith<$Res> {
   factory _$$AddExpenseEventCopyWith(
           _$AddExpenseEvent value, $Res Function(_$AddExpenseEvent) then) =
       __$$AddExpenseEventCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({ExpenseViewModel expenseViewModel});
 
-  @override
   $ExpenseViewModelCopyWith<$Res> get expenseViewModel;
 }
 
@@ -131,6 +123,14 @@ class __$$AddExpenseEventCopyWithImpl<$Res>
           : expenseViewModel // ignore: cast_nullable_to_non_nullable
               as ExpenseViewModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExpenseViewModelCopyWith<$Res> get expenseViewModel {
+    return $ExpenseViewModelCopyWith<$Res>(_value.expenseViewModel, (value) {
+      return _then(_value.copyWith(expenseViewModel: value));
+    });
   }
 }
 
@@ -169,6 +169,10 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
+    required TResult Function(FilterParam filterParam) filterExpenseByDateTime,
+    required TResult Function(ExpenseCategory expenseCategory)
+        filterExpenseByCategory,
+    required TResult Function(String id) removeExpense,
   }) {
     return addExpense(expenseViewModel);
   }
@@ -177,6 +181,9 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
+    TResult? Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult? Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
+    TResult? Function(String id)? removeExpense,
   }) {
     return addExpense?.call(expenseViewModel);
   }
@@ -185,6 +192,9 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
+    TResult Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
+    TResult Function(String id)? removeExpense,
     required TResult orElse(),
   }) {
     if (addExpense != null) {
@@ -197,6 +207,11 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddExpenseEvent value) addExpense,
+    required TResult Function(FilterExpenseByDateTimeEvent value)
+        filterExpenseByDateTime,
+    required TResult Function(FilterExpenseByCategoryEvent value)
+        filterExpenseByCategory,
+    required TResult Function(RemoveExpenseEvent value) removeExpense,
   }) {
     return addExpense(this);
   }
@@ -205,6 +220,11 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddExpenseEvent value)? addExpense,
+    TResult? Function(FilterExpenseByDateTimeEvent value)?
+        filterExpenseByDateTime,
+    TResult? Function(FilterExpenseByCategoryEvent value)?
+        filterExpenseByCategory,
+    TResult? Function(RemoveExpenseEvent value)? removeExpense,
   }) {
     return addExpense?.call(this);
   }
@@ -213,6 +233,11 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddExpenseEvent value)? addExpense,
+    TResult Function(FilterExpenseByDateTimeEvent value)?
+        filterExpenseByDateTime,
+    TResult Function(FilterExpenseByCategoryEvent value)?
+        filterExpenseByCategory,
+    TResult Function(RemoveExpenseEvent value)? removeExpense,
     required TResult orElse(),
   }) {
     if (addExpense != null) {
@@ -226,11 +251,479 @@ abstract class AddExpenseEvent implements MainScreenEvent {
   const factory AddExpenseEvent(
       {required final ExpenseViewModel expenseViewModel}) = _$AddExpenseEvent;
 
-  @override
   ExpenseViewModel get expenseViewModel;
-  @override
   @JsonKey(ignore: true)
   _$$AddExpenseEventCopyWith<_$AddExpenseEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FilterExpenseByDateTimeEventCopyWith<$Res> {
+  factory _$$FilterExpenseByDateTimeEventCopyWith(
+          _$FilterExpenseByDateTimeEvent value,
+          $Res Function(_$FilterExpenseByDateTimeEvent) then) =
+      __$$FilterExpenseByDateTimeEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({FilterParam filterParam});
+}
+
+/// @nodoc
+class __$$FilterExpenseByDateTimeEventCopyWithImpl<$Res>
+    extends _$MainScreenEventCopyWithImpl<$Res, _$FilterExpenseByDateTimeEvent>
+    implements _$$FilterExpenseByDateTimeEventCopyWith<$Res> {
+  __$$FilterExpenseByDateTimeEventCopyWithImpl(
+      _$FilterExpenseByDateTimeEvent _value,
+      $Res Function(_$FilterExpenseByDateTimeEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filterParam = null,
+  }) {
+    return _then(_$FilterExpenseByDateTimeEvent(
+      filterParam: null == filterParam
+          ? _value.filterParam
+          : filterParam // ignore: cast_nullable_to_non_nullable
+              as FilterParam,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FilterExpenseByDateTimeEvent implements FilterExpenseByDateTimeEvent {
+  const _$FilterExpenseByDateTimeEvent({required this.filterParam});
+
+  @override
+  final FilterParam filterParam;
+
+  @override
+  String toString() {
+    return 'MainScreenEvent.filterExpenseByDateTime(filterParam: $filterParam)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterExpenseByDateTimeEvent &&
+            (identical(other.filterParam, filterParam) ||
+                other.filterParam == filterParam));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, filterParam);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterExpenseByDateTimeEventCopyWith<_$FilterExpenseByDateTimeEvent>
+      get copyWith => __$$FilterExpenseByDateTimeEventCopyWithImpl<
+          _$FilterExpenseByDateTimeEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
+    required TResult Function(FilterParam filterParam) filterExpenseByDateTime,
+    required TResult Function(ExpenseCategory expenseCategory)
+        filterExpenseByCategory,
+    required TResult Function(String id) removeExpense,
+  }) {
+    return filterExpenseByDateTime(filterParam);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
+    TResult? Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult? Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
+    TResult? Function(String id)? removeExpense,
+  }) {
+    return filterExpenseByDateTime?.call(filterParam);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
+    TResult Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
+    TResult Function(String id)? removeExpense,
+    required TResult orElse(),
+  }) {
+    if (filterExpenseByDateTime != null) {
+      return filterExpenseByDateTime(filterParam);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddExpenseEvent value) addExpense,
+    required TResult Function(FilterExpenseByDateTimeEvent value)
+        filterExpenseByDateTime,
+    required TResult Function(FilterExpenseByCategoryEvent value)
+        filterExpenseByCategory,
+    required TResult Function(RemoveExpenseEvent value) removeExpense,
+  }) {
+    return filterExpenseByDateTime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddExpenseEvent value)? addExpense,
+    TResult? Function(FilterExpenseByDateTimeEvent value)?
+        filterExpenseByDateTime,
+    TResult? Function(FilterExpenseByCategoryEvent value)?
+        filterExpenseByCategory,
+    TResult? Function(RemoveExpenseEvent value)? removeExpense,
+  }) {
+    return filterExpenseByDateTime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddExpenseEvent value)? addExpense,
+    TResult Function(FilterExpenseByDateTimeEvent value)?
+        filterExpenseByDateTime,
+    TResult Function(FilterExpenseByCategoryEvent value)?
+        filterExpenseByCategory,
+    TResult Function(RemoveExpenseEvent value)? removeExpense,
+    required TResult orElse(),
+  }) {
+    if (filterExpenseByDateTime != null) {
+      return filterExpenseByDateTime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilterExpenseByDateTimeEvent implements MainScreenEvent {
+  const factory FilterExpenseByDateTimeEvent(
+          {required final FilterParam filterParam}) =
+      _$FilterExpenseByDateTimeEvent;
+
+  FilterParam get filterParam;
+  @JsonKey(ignore: true)
+  _$$FilterExpenseByDateTimeEventCopyWith<_$FilterExpenseByDateTimeEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FilterExpenseByCategoryEventCopyWith<$Res> {
+  factory _$$FilterExpenseByCategoryEventCopyWith(
+          _$FilterExpenseByCategoryEvent value,
+          $Res Function(_$FilterExpenseByCategoryEvent) then) =
+      __$$FilterExpenseByCategoryEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ExpenseCategory expenseCategory});
+}
+
+/// @nodoc
+class __$$FilterExpenseByCategoryEventCopyWithImpl<$Res>
+    extends _$MainScreenEventCopyWithImpl<$Res, _$FilterExpenseByCategoryEvent>
+    implements _$$FilterExpenseByCategoryEventCopyWith<$Res> {
+  __$$FilterExpenseByCategoryEventCopyWithImpl(
+      _$FilterExpenseByCategoryEvent _value,
+      $Res Function(_$FilterExpenseByCategoryEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? expenseCategory = null,
+  }) {
+    return _then(_$FilterExpenseByCategoryEvent(
+      expenseCategory: null == expenseCategory
+          ? _value.expenseCategory
+          : expenseCategory // ignore: cast_nullable_to_non_nullable
+              as ExpenseCategory,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FilterExpenseByCategoryEvent implements FilterExpenseByCategoryEvent {
+  const _$FilterExpenseByCategoryEvent({required this.expenseCategory});
+
+  @override
+  final ExpenseCategory expenseCategory;
+
+  @override
+  String toString() {
+    return 'MainScreenEvent.filterExpenseByCategory(expenseCategory: $expenseCategory)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterExpenseByCategoryEvent &&
+            (identical(other.expenseCategory, expenseCategory) ||
+                other.expenseCategory == expenseCategory));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, expenseCategory);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterExpenseByCategoryEventCopyWith<_$FilterExpenseByCategoryEvent>
+      get copyWith => __$$FilterExpenseByCategoryEventCopyWithImpl<
+          _$FilterExpenseByCategoryEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
+    required TResult Function(FilterParam filterParam) filterExpenseByDateTime,
+    required TResult Function(ExpenseCategory expenseCategory)
+        filterExpenseByCategory,
+    required TResult Function(String id) removeExpense,
+  }) {
+    return filterExpenseByCategory(expenseCategory);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
+    TResult? Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult? Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
+    TResult? Function(String id)? removeExpense,
+  }) {
+    return filterExpenseByCategory?.call(expenseCategory);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
+    TResult Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
+    TResult Function(String id)? removeExpense,
+    required TResult orElse(),
+  }) {
+    if (filterExpenseByCategory != null) {
+      return filterExpenseByCategory(expenseCategory);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddExpenseEvent value) addExpense,
+    required TResult Function(FilterExpenseByDateTimeEvent value)
+        filterExpenseByDateTime,
+    required TResult Function(FilterExpenseByCategoryEvent value)
+        filterExpenseByCategory,
+    required TResult Function(RemoveExpenseEvent value) removeExpense,
+  }) {
+    return filterExpenseByCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddExpenseEvent value)? addExpense,
+    TResult? Function(FilterExpenseByDateTimeEvent value)?
+        filterExpenseByDateTime,
+    TResult? Function(FilterExpenseByCategoryEvent value)?
+        filterExpenseByCategory,
+    TResult? Function(RemoveExpenseEvent value)? removeExpense,
+  }) {
+    return filterExpenseByCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddExpenseEvent value)? addExpense,
+    TResult Function(FilterExpenseByDateTimeEvent value)?
+        filterExpenseByDateTime,
+    TResult Function(FilterExpenseByCategoryEvent value)?
+        filterExpenseByCategory,
+    TResult Function(RemoveExpenseEvent value)? removeExpense,
+    required TResult orElse(),
+  }) {
+    if (filterExpenseByCategory != null) {
+      return filterExpenseByCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilterExpenseByCategoryEvent implements MainScreenEvent {
+  const factory FilterExpenseByCategoryEvent(
+          {required final ExpenseCategory expenseCategory}) =
+      _$FilterExpenseByCategoryEvent;
+
+  ExpenseCategory get expenseCategory;
+  @JsonKey(ignore: true)
+  _$$FilterExpenseByCategoryEventCopyWith<_$FilterExpenseByCategoryEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveExpenseEventCopyWith<$Res> {
+  factory _$$RemoveExpenseEventCopyWith(_$RemoveExpenseEvent value,
+          $Res Function(_$RemoveExpenseEvent) then) =
+      __$$RemoveExpenseEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$RemoveExpenseEventCopyWithImpl<$Res>
+    extends _$MainScreenEventCopyWithImpl<$Res, _$RemoveExpenseEvent>
+    implements _$$RemoveExpenseEventCopyWith<$Res> {
+  __$$RemoveExpenseEventCopyWithImpl(
+      _$RemoveExpenseEvent _value, $Res Function(_$RemoveExpenseEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$RemoveExpenseEvent(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoveExpenseEvent implements RemoveExpenseEvent {
+  const _$RemoveExpenseEvent({required this.id});
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'MainScreenEvent.removeExpense(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveExpenseEvent &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveExpenseEventCopyWith<_$RemoveExpenseEvent> get copyWith =>
+      __$$RemoveExpenseEventCopyWithImpl<_$RemoveExpenseEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
+    required TResult Function(FilterParam filterParam) filterExpenseByDateTime,
+    required TResult Function(ExpenseCategory expenseCategory)
+        filterExpenseByCategory,
+    required TResult Function(String id) removeExpense,
+  }) {
+    return removeExpense(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
+    TResult? Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult? Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
+    TResult? Function(String id)? removeExpense,
+  }) {
+    return removeExpense?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
+    TResult Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
+    TResult Function(String id)? removeExpense,
+    required TResult orElse(),
+  }) {
+    if (removeExpense != null) {
+      return removeExpense(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddExpenseEvent value) addExpense,
+    required TResult Function(FilterExpenseByDateTimeEvent value)
+        filterExpenseByDateTime,
+    required TResult Function(FilterExpenseByCategoryEvent value)
+        filterExpenseByCategory,
+    required TResult Function(RemoveExpenseEvent value) removeExpense,
+  }) {
+    return removeExpense(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddExpenseEvent value)? addExpense,
+    TResult? Function(FilterExpenseByDateTimeEvent value)?
+        filterExpenseByDateTime,
+    TResult? Function(FilterExpenseByCategoryEvent value)?
+        filterExpenseByCategory,
+    TResult? Function(RemoveExpenseEvent value)? removeExpense,
+  }) {
+    return removeExpense?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddExpenseEvent value)? addExpense,
+    TResult Function(FilterExpenseByDateTimeEvent value)?
+        filterExpenseByDateTime,
+    TResult Function(FilterExpenseByCategoryEvent value)?
+        filterExpenseByCategory,
+    TResult Function(RemoveExpenseEvent value)? removeExpense,
+    required TResult orElse(),
+  }) {
+    if (removeExpense != null) {
+      return removeExpense(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveExpenseEvent implements MainScreenEvent {
+  const factory RemoveExpenseEvent({required final String id}) =
+      _$RemoveExpenseEvent;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$RemoveExpenseEventCopyWith<_$RemoveExpenseEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

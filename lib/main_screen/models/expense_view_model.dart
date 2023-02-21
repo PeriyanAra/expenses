@@ -7,6 +7,7 @@ part 'expense_view_model.freezed.dart';
 class ExpenseViewModel with _$ExpenseViewModel {
   const factory ExpenseViewModel({
     required String name,
+    required String id,
     required double amount,
     required ExpenseCategory category,
     required DateTime date,
