@@ -23,7 +23,7 @@ class _ListTabState extends State<ListTab> {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             itemCount: state.mainScreenViewModel.expenses.length,
             itemBuilder: (context, index) {
-              final expense = mockMainScreenViewModel.expenses[index];
+              final expense = state.mainScreenViewModel.expenses[index];
 
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
