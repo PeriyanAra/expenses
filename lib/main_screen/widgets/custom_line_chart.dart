@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:expenses/main_screen/enums/expense_category.dart';
 import 'package:expenses/main_screen/models/chart_view_models/line_chart_item_group_view_model.dart';
 import 'package:expenses/main_screen/models/chart_view_models/line_chart_view_model.dart';
 import 'package:expenses/theme/app_colors.dart';
+import 'package:expenses/theme/export.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -34,8 +37,8 @@ class _CustomLineChartState extends State<CustomLineChart> {
   ) {
     final List<FlSpot> spots = group.items
         .map((e) => FlSpot(
-              e.value,
               e.date.day.toDouble(),
+              e.value,
             ))
         .toList();
 
@@ -55,74 +58,76 @@ class _CustomLineChartState extends State<CustomLineChart> {
 
   @override
   Widget build(BuildContext context) {
-    return LineChart(
-      LineChartData(
-        lineTouchData: LineTouchData(
-          handleBuiltInTouches: true,
-          touchTooltipData: LineTouchTooltipData(
-            tooltipBgColor: secondaryTextColor,
-          ),
-        ),
-        gridData: FlGridData(show: false),
-        titlesData: FlTitlesData(
-          bottomTitles: AxisTitles(
-            sideTitles: SideTitles(
-              showTitles: true,
-              reservedSize: 32,
-              interval: 1,
-              getTitlesWidget: bottomTitleWidgets,
+    return SafeArea(
+      child: LineChart(
+        LineChartData(
+          lineTouchData: LineTouchData(
+            handleBuiltInTouches: true,
+            touchTooltipData: LineTouchTooltipData(
+              tooltipBgColor: secondaryTextColor,
             ),
           ),
-          rightTitles: AxisTitles(
-            sideTitles: SideTitles(showTitles: false),
-          ),
-          topTitles: AxisTitles(
-            sideTitles: SideTitles(showTitles: false),
-          ),
-          leftTitles: AxisTitles(
-            sideTitles: SideTitles(
-              getTitlesWidget: leftTitleWidgets,
-              showTitles: true,
-              interval: 1,
-              reservedSize: 40,
+          gridData: FlGridData(show: false),
+          titlesData: FlTitlesData(
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                reservedSize: 32,
+                interval: 1,
+                getTitlesWidget: bottomTitleWidgets,
+              ),
+            ),
+            rightTitles: AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
+            ),
+            topTitles: AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
+            ),
+            leftTitles: AxisTitles(
+              sideTitles: SideTitles(
+                getTitlesWidget: leftTitleWidgets,
+                showTitles: true,
+                interval: 50,
+                reservedSize: 40,
+              ),
             ),
           ),
-        ),
-        borderData: FlBorderData(
-          show: true,
-          border: const Border(
-            bottom: BorderSide(color: Color(0xff4e4965), width: 4),
-            left: BorderSide(color: Colors.transparent),
-            right: BorderSide(color: Colors.transparent),
-            top: BorderSide(color: Colors.transparent),
+          borderData: FlBorderData(
+            show: true,
+            border: const Border(
+              bottom: BorderSide(color: Color(0xff4e4965), width: 4),
+              left: BorderSide(color: Colors.transparent),
+              right: BorderSide(color: Colors.transparent),
+              top: BorderSide(color: Colors.transparent),
+            ),
           ),
+          lineBarsData: lineChartBarData,
+          minX: 0,
+          maxX: widget.viewModel.dates.length.toDouble(),
+          maxY: widget.viewModel.maximumExpenseAmount,
+          minY: 0,
         ),
-        lineBarsData: lineChartBarData,
-        minX: 0,
-        maxX: 14,
-        maxY: 4,
-        minY: 0,
+        swapAnimationDuration: const Duration(milliseconds: 250),
       ),
-      swapAnimationDuration: const Duration(milliseconds: 250),
     );
   }
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Color(0xff72719b),
-      fontWeight: FontWeight.bold,
-      fontSize: 16,
+    final style = appTheme.textTheme.caption2.copyWith(
+      color: secondaryTextColor,
+      fontWeight: FontWeight.w600,
     );
+
     Widget text;
     switch (value.toInt()) {
       case 2:
-        text = const Text('SEPT', style: style);
+        text = Text('SEPT', style: style);
         break;
       case 7:
-        text = const Text('OCT', style: style);
+        text = Text('OCT', style: style);
         break;
       case 12:
-        text = const Text('DEC', style: style);
+        text = Text('DEC', style: style);
         break;
       default:
         text = const Text('');
@@ -137,32 +142,19 @@ class _CustomLineChartState extends State<CustomLineChart> {
   }
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Color(0xff75729e),
-      fontWeight: FontWeight.bold,
-      fontSize: 14,
+    final style = appTheme.textTheme.caption2.copyWith(
+      color: secondaryTextColor,
+      fontWeight: FontWeight.w600,
     );
-    String text;
-    switch (value.toInt()) {
-      case 1:
-        text = '1m';
-        break;
-      case 2:
-        text = '2m';
-        break;
-      case 3:
-        text = '3m';
-        break;
-      case 4:
-        text = '5m';
-        break;
-      case 5:
-        text = '6m';
-        break;
-      default:
-        return Container();
-    }
 
-    return Text(text, style: style, textAlign: TextAlign.center);
+    log(
+      value.toString(),
+      name: 'value',
+    );
+    return Text(
+      '$value \$',
+      style: style,
+      textAlign: TextAlign.center,
+    );
   }
 }

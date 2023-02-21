@@ -8,7 +8,6 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: secondaryColor,
@@ -30,7 +29,7 @@ class MainScreen extends StatelessWidget {
                   color: Color(0x1F77839A),
                 ),
               ),
-              // child: Icon(Icons.add),
+              child: Icon(Icons.add),
             ),
           )
         ],

@@ -74,44 +74,46 @@ class _CustomBarChartState extends State<CustomBarChart> {
 
   @override
   Widget build(BuildContext context) {
-    return BarChart(
-      BarChartData(
-        maxY: widget.viewModel.maximumExpenseAmount,
-        barTouchData: BarTouchData(
-            touchTooltipData: BarTouchTooltipData(
-              getTooltipItem: (_a, _b, _c, _d) => null,
+    return SafeArea(
+      child: BarChart(
+        BarChartData(
+          maxY: widget.viewModel.maximumExpenseAmount,
+          barTouchData: BarTouchData(
+              touchTooltipData: BarTouchTooltipData(
+                getTooltipItem: (_a, _b, _c, _d) => null,
+              ),
+              touchCallback: (FlTouchEvent event, response) {}),
+          titlesData: FlTitlesData(
+            show: true,
+            rightTitles: AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
             ),
-            touchCallback: (FlTouchEvent event, response) {}),
-        titlesData: FlTitlesData(
-          show: true,
-          rightTitles: AxisTitles(
-            sideTitles: SideTitles(showTitles: false),
-          ),
-          topTitles: AxisTitles(
-            sideTitles: SideTitles(showTitles: false),
-          ),
-          bottomTitles: AxisTitles(
-            sideTitles: SideTitles(
-              showTitles: true,
-              getTitlesWidget: makeBottomTitles,
-              reservedSize: 42,
+            topTitles: AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
+            ),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                getTitlesWidget: makeBottomTitles,
+                reservedSize: 42,
+              ),
+            ),
+            leftTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                reservedSize: 50,
+                interval: 50,
+                getTitlesWidget: leftTitles,
+              ),
+              drawBehindEverything: false,
             ),
           ),
-          leftTitles: AxisTitles(
-            sideTitles: SideTitles(
-              showTitles: true,
-              reservedSize: 50,
-              interval: 50,
-              getTitlesWidget: leftTitles,
-            ),
-            drawBehindEverything: false,
+          borderData: FlBorderData(
+            show: false,
           ),
+          barGroups: showingBarGroups,
+          gridData: FlGridData(show: false),
         ),
-        borderData: FlBorderData(
-          show: false,
-        ),
-        barGroups: showingBarGroups,
-        gridData: FlGridData(show: false),
       ),
     );
   }

@@ -43,7 +43,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                   alignment: Alignment.topRight,
                   child: GestureDetector(
                     onTap: () => Navigator.pop(context),
-                    // child: Icon(Icons.close),
+                    child: Icon(Icons.close),
                   ),
                 ),
               ],
