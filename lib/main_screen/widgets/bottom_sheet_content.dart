@@ -42,8 +42,9 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 Align(
                   alignment: Alignment.topRight,
                   child: GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: Icon(Icons.close)),
+                    onTap: () => Navigator.pop(context),
+                    // child: Icon(Icons.close),
+                  ),
                 ),
               ],
             ),
@@ -53,9 +54,8 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                   Row(
                     children: [
                       Text('Category'),
-                  
                     ],
-                  ),  
+                  ),
                 ],
               ),
             ),

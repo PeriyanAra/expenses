@@ -1,3 +1,6 @@
+import 'package:expenses/main_screen/mocks/expenses_list.dart';
+import 'package:expenses/main_screen/models/chart_view_models/bar_chart_view_model.dart';
+import 'package:expenses/main_screen/widgets/custom_bar_chart.dart';
 import 'package:expenses/main_screen/mocks/pie_chart_view_model.dart';
 import 'package:expenses/main_screen/widgets/custom_pie_chart.dart';
 import 'package:expenses/main_screen/widgets/tabs/list_tab.dart';
@@ -56,8 +59,10 @@ class _MainTabState extends State<MainTab> with TickerProviderStateMixin {
                   controller: _tabController,
                   children: [
                     ListTab(),
-                    Container(
-                      color: Colors.red,
+                    CustomBarChart(
+                      viewModel: BarChartViewModel.fromExpenses(
+                        expenses,
+                      ),
                     ),
                     Container(
                       color: Colors.black,

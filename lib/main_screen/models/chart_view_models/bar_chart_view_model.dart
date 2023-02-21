@@ -1,3 +1,4 @@
+import 'package:expenses/main_screen/enums/expense_category.dart';
 import 'package:expenses/main_screen/models/chart_view_models/bar_chart_item_group_view_model.dart';
 import 'package:expenses/main_screen/models/chart_view_models/bar_chart_item_view_model.dart';
 import 'package:expenses/main_screen/models/expense_view_model.dart';
@@ -15,8 +16,8 @@ class BarChartViewModel with _$BarChartViewModel {
 
   const BarChartViewModel._();
 
-  BarChartViewModel fromExpenses(List<ExpenseViewModel> expenses) {
-    final List<BarChartItemGroupViewModel> itemGroups = [];
+  factory BarChartViewModel.fromExpenses(List<ExpenseViewModel> expenses) {
+    final List<BarChartItemGroupViewModel> dateItemGroups = [];
     final List<DateTime> dates = [];
     double maximumExpenseAmount = 0.0;
 
@@ -33,10 +34,6 @@ class BarChartViewModel with _$BarChartViewModel {
         final List<BarChartItemViewModel> groupItems = [];
 
         expenses.forEach((expense) {
-          if (expense.amount > maximumExpenseAmount) {
-            maximumExpenseAmount = expense.amount;
-          }
-
           if (expense.date == date) {
             final groupItem = BarChartItemViewModel(
               value: expense.amount,
@@ -47,7 +44,7 @@ class BarChartViewModel with _$BarChartViewModel {
           }
         });
 
-        itemGroups.add(
+        dateItemGroups.add(
           BarChartItemGroupViewModel(
             date: date,
             items: groupItems,
@@ -55,6 +52,40 @@ class BarChartViewModel with _$BarChartViewModel {
         );
       },
     );
+
+    final List<BarChartItemGroupViewModel> itemGroups = [];
+
+    dateItemGroups.forEach((group) {
+      final List<BarChartItemViewModel> groupItems = [];
+
+      ExpenseCategory.values.forEach((category) {
+        double categoryAmount = 0.0;
+
+        group.items.forEach((item) {
+          if (item.category == category) {
+            categoryAmount += item.value;
+          }
+        });
+
+        if (categoryAmount > maximumExpenseAmount) {
+          maximumExpenseAmount = categoryAmount;
+        }
+
+        groupItems.add(
+          BarChartItemViewModel(
+            value: categoryAmount,
+            category: category,
+          ),
+        );
+      });
+
+      itemGroups.add(
+        BarChartItemGroupViewModel(
+          items: groupItems,
+          date: group.date,
+        ),
+      );
+    });
 
     return BarChartViewModel(
       itemGroups: itemGroups,
