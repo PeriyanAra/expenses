@@ -19,33 +19,33 @@ mixin _$MainScreenEvent {
   ExpenseViewModel get expenseViewModel => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ExpenseViewModel expenseViewModel) addExpence,
+    required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ExpenseViewModel expenseViewModel)? addExpence,
+    TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ExpenseViewModel expenseViewModel)? addExpence,
+    TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddExpenseEvent value) addExpence,
+    required TResult Function(AddExpenseEvent value) addExpense,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AddExpenseEvent value)? addExpence,
+    TResult? Function(AddExpenseEvent value)? addExpense,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddExpenseEvent value)? addExpence,
+    TResult Function(AddExpenseEvent value)? addExpense,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,7 +144,7 @@ class _$AddExpenseEvent implements AddExpenseEvent {
 
   @override
   String toString() {
-    return 'MainScreenEvent.addExpence(expenseViewModel: $expenseViewModel)';
+    return 'MainScreenEvent.addExpense(expenseViewModel: $expenseViewModel)';
   }
 
   @override
@@ -168,27 +168,27 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ExpenseViewModel expenseViewModel) addExpence,
+    required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
   }) {
-    return addExpence(expenseViewModel);
+    return addExpense(expenseViewModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ExpenseViewModel expenseViewModel)? addExpence,
+    TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
   }) {
-    return addExpence?.call(expenseViewModel);
+    return addExpense?.call(expenseViewModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ExpenseViewModel expenseViewModel)? addExpence,
+    TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
     required TResult orElse(),
   }) {
-    if (addExpence != null) {
-      return addExpence(expenseViewModel);
+    if (addExpense != null) {
+      return addExpense(expenseViewModel);
     }
     return orElse();
   }
@@ -196,27 +196,27 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddExpenseEvent value) addExpence,
+    required TResult Function(AddExpenseEvent value) addExpense,
   }) {
-    return addExpence(this);
+    return addExpense(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AddExpenseEvent value)? addExpence,
+    TResult? Function(AddExpenseEvent value)? addExpense,
   }) {
-    return addExpence?.call(this);
+    return addExpense?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddExpenseEvent value)? addExpence,
+    TResult Function(AddExpenseEvent value)? addExpense,
     required TResult orElse(),
   }) {
-    if (addExpence != null) {
-      return addExpence(this);
+    if (addExpense != null) {
+      return addExpense(this);
     }
     return orElse();
   }
@@ -258,19 +258,19 @@ mixin _$MainScreenState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MainScreenInitialState value) initial,
-    required TResult Function(MainScreenLoadedStatae value) loaded,
+    required TResult Function(MainScreenLoadedState value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MainScreenInitialState value)? initial,
-    TResult? Function(MainScreenLoadedStatae value)? loaded,
+    TResult? Function(MainScreenLoadedState value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MainScreenInitialState value)? initial,
-    TResult Function(MainScreenLoadedStatae value)? loaded,
+    TResult Function(MainScreenLoadedState value)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -364,7 +364,7 @@ class _$MainScreenInitialState implements MainScreenInitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MainScreenInitialState value) initial,
-    required TResult Function(MainScreenLoadedStatae value) loaded,
+    required TResult Function(MainScreenLoadedState value) loaded,
   }) {
     return initial(this);
   }
@@ -373,7 +373,7 @@ class _$MainScreenInitialState implements MainScreenInitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MainScreenInitialState value)? initial,
-    TResult? Function(MainScreenLoadedStatae value)? loaded,
+    TResult? Function(MainScreenLoadedState value)? loaded,
   }) {
     return initial?.call(this);
   }
@@ -382,7 +382,7 @@ class _$MainScreenInitialState implements MainScreenInitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MainScreenInitialState value)? initial,
-    TResult Function(MainScreenLoadedStatae value)? loaded,
+    TResult Function(MainScreenLoadedState value)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -397,10 +397,10 @@ abstract class MainScreenInitialState implements MainScreenState {
 }
 
 /// @nodoc
-abstract class _$$MainScreenLoadedStataeCopyWith<$Res> {
-  factory _$$MainScreenLoadedStataeCopyWith(_$MainScreenLoadedStatae value,
-          $Res Function(_$MainScreenLoadedStatae) then) =
-      __$$MainScreenLoadedStataeCopyWithImpl<$Res>;
+abstract class _$$MainScreenLoadedStateCopyWith<$Res> {
+  factory _$$MainScreenLoadedStateCopyWith(_$MainScreenLoadedState value,
+          $Res Function(_$MainScreenLoadedState) then) =
+      __$$MainScreenLoadedStateCopyWithImpl<$Res>;
   @useResult
   $Res call({MainScreenViewModel mainScreenViewModel});
 
@@ -408,11 +408,11 @@ abstract class _$$MainScreenLoadedStataeCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$MainScreenLoadedStataeCopyWithImpl<$Res>
-    extends _$MainScreenStateCopyWithImpl<$Res, _$MainScreenLoadedStatae>
-    implements _$$MainScreenLoadedStataeCopyWith<$Res> {
-  __$$MainScreenLoadedStataeCopyWithImpl(_$MainScreenLoadedStatae _value,
-      $Res Function(_$MainScreenLoadedStatae) _then)
+class __$$MainScreenLoadedStateCopyWithImpl<$Res>
+    extends _$MainScreenStateCopyWithImpl<$Res, _$MainScreenLoadedState>
+    implements _$$MainScreenLoadedStateCopyWith<$Res> {
+  __$$MainScreenLoadedStateCopyWithImpl(_$MainScreenLoadedState _value,
+      $Res Function(_$MainScreenLoadedState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -420,7 +420,7 @@ class __$$MainScreenLoadedStataeCopyWithImpl<$Res>
   $Res call({
     Object? mainScreenViewModel = null,
   }) {
-    return _then(_$MainScreenLoadedStatae(
+    return _then(_$MainScreenLoadedState(
       mainScreenViewModel: null == mainScreenViewModel
           ? _value.mainScreenViewModel
           : mainScreenViewModel // ignore: cast_nullable_to_non_nullable
@@ -440,8 +440,8 @@ class __$$MainScreenLoadedStataeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MainScreenLoadedStatae implements MainScreenLoadedStatae {
-  const _$MainScreenLoadedStatae({required this.mainScreenViewModel});
+class _$MainScreenLoadedState implements MainScreenLoadedState {
+  const _$MainScreenLoadedState({required this.mainScreenViewModel});
 
   @override
   final MainScreenViewModel mainScreenViewModel;
@@ -455,7 +455,7 @@ class _$MainScreenLoadedStatae implements MainScreenLoadedStatae {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MainScreenLoadedStatae &&
+            other is _$MainScreenLoadedState &&
             (identical(other.mainScreenViewModel, mainScreenViewModel) ||
                 other.mainScreenViewModel == mainScreenViewModel));
   }
@@ -466,8 +466,8 @@ class _$MainScreenLoadedStatae implements MainScreenLoadedStatae {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MainScreenLoadedStataeCopyWith<_$MainScreenLoadedStatae> get copyWith =>
-      __$$MainScreenLoadedStataeCopyWithImpl<_$MainScreenLoadedStatae>(
+  _$$MainScreenLoadedStateCopyWith<_$MainScreenLoadedState> get copyWith =>
+      __$$MainScreenLoadedStateCopyWithImpl<_$MainScreenLoadedState>(
           this, _$identity);
 
   @override
@@ -505,7 +505,7 @@ class _$MainScreenLoadedStatae implements MainScreenLoadedStatae {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MainScreenInitialState value) initial,
-    required TResult Function(MainScreenLoadedStatae value) loaded,
+    required TResult Function(MainScreenLoadedState value) loaded,
   }) {
     return loaded(this);
   }
@@ -514,7 +514,7 @@ class _$MainScreenLoadedStatae implements MainScreenLoadedStatae {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MainScreenInitialState value)? initial,
-    TResult? Function(MainScreenLoadedStatae value)? loaded,
+    TResult? Function(MainScreenLoadedState value)? loaded,
   }) {
     return loaded?.call(this);
   }
@@ -523,7 +523,7 @@ class _$MainScreenLoadedStatae implements MainScreenLoadedStatae {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MainScreenInitialState value)? initial,
-    TResult Function(MainScreenLoadedStatae value)? loaded,
+    TResult Function(MainScreenLoadedState value)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -533,13 +533,13 @@ class _$MainScreenLoadedStatae implements MainScreenLoadedStatae {
   }
 }
 
-abstract class MainScreenLoadedStatae implements MainScreenState {
-  const factory MainScreenLoadedStatae(
+abstract class MainScreenLoadedState implements MainScreenState {
+  const factory MainScreenLoadedState(
           {required final MainScreenViewModel mainScreenViewModel}) =
-      _$MainScreenLoadedStatae;
+      _$MainScreenLoadedState;
 
   MainScreenViewModel get mainScreenViewModel;
   @JsonKey(ignore: true)
-  _$$MainScreenLoadedStataeCopyWith<_$MainScreenLoadedStatae> get copyWith =>
+  _$$MainScreenLoadedStateCopyWith<_$MainScreenLoadedState> get copyWith =>
       throw _privateConstructorUsedError;
 }
