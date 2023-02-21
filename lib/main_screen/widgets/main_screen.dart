@@ -16,12 +16,12 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int index = 0;
-  final TextEditingController expenseName = TextEditingController();
-  final TextEditingController expenseAmount = TextEditingController();
-  String expenseCategory = '';
+  
   @override
   Widget build(BuildContext context) {
+    final TextEditingController expenseName = TextEditingController();
+    final TextEditingController expenseAmount = TextEditingController();
+    String expenseCategory = 'food';
 
     return Scaffold(
       backgroundColor: secondaryColor,
