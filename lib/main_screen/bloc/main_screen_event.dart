@@ -10,9 +10,9 @@ class MainScreenEvent with _$MainScreenEvent {
     required String id,
   }) = RemoveExpenseEvent;
 
-  const factory MainScreenEvent.filterExpenseByDateTime({
+  const factory MainScreenEvent.filterExpenseByDate({
     required FilterParam filterParam,
-  }) = FilterExpenseByDateTimeEvent;
+  }) = FilterExpenseByDateEvent;
 
   const factory MainScreenEvent.filterExpenseByCategory({
     required ExpenseCategory expenseCategory,

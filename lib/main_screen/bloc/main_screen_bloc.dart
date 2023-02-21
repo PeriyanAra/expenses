@@ -4,6 +4,7 @@ import 'package:expenses/main_screen/enums/filter_param.dart';
 import 'package:expenses/main_screen/models/expense_view_model.dart';
 import 'package:expenses/main_screen/models/main_screen_view_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:expenses/utils/date_time_convertor.dart' show DateConvertToWeek;
 
 part 'main_screen_event.dart';
 part 'main_screen_state.dart';
@@ -21,7 +22,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     on<AddExpenseEvent>(_handleAddExpenseEvent);
     on<RemoveExpenseEvent>(_handleRemoveExpenseEvent);
     on<FilterExpenseByCategoryEvent>(_handleFilterExpenseByCategoryEvent);
-    on<FilterExpenseByDateTimeEvent>(_handleFilterExpenseByDateTimeEvent);
+    on<FilterExpenseByDateEvent>(_handleFilterExpenseByDateEvent);
   }
 
   void _handleAddExpenseEvent(
@@ -89,13 +90,13 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     );
   }
 
-  void _handleFilterExpenseByDateTimeEvent(
-    FilterExpenseByDateTimeEvent event,
+  void _handleFilterExpenseByDateEvent(
+    FilterExpenseByDateEvent event,
     Emitter<MainScreenState> emit,
   ) {
     var expenses = <ExpenseViewModel>[];
     final currentDate = DateTime.now();
-    
+
     if (event.filterParam == FilterParam.today) {
       allExpenses.forEach(
         (element) {
@@ -109,7 +110,9 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     } else if (event.filterParam == FilterParam.thisWeek) {
       allExpenses.forEach(
         (element) {
-          if (element.date.weekday == currentDate.weekday &&
+          final checkIfInThisWeek = currentDate.weekOfMonth == element.date.weekOfMonth;
+
+          if (checkIfInThisWeek &&
               element.date.month == currentDate.month &&
               element.date.year == currentDate.year) {
             expenses.add(element);
