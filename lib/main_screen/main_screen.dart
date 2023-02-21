@@ -20,13 +20,8 @@ class MainScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                backgroundColor: Colors.transparent,
-                builder: (context) => BottomSheetContent(),
-              );
-            },
+            onPressed: () {},
+            
             icon: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
