@@ -22,8 +22,6 @@ class _ListTabState extends State<ListTab> {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             itemCount: state.mainScreenViewModel.expenses.length,
             itemBuilder: (context, index) {
-              if (index != 0)
-                print(state.mainScreenViewModel.expenses[index - 1].date.year);
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
