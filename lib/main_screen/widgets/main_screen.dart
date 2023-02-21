@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
 
     final TextEditingController expenseName = TextEditingController();
     final TextEditingController expenseAmount = TextEditingController();
-    String expenseCategory = '';
+    String expenseCategory = 'food';
 
     return Scaffold(
       backgroundColor: secondaryColor,
