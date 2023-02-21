@@ -15,31 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PieChartViewModelItemViewModel {
+mixin _$PieChartItemViewModel {
   double get value => throw _privateConstructorUsedError;
   ExpenseCategory get category => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PieChartViewModelItemViewModelCopyWith<PieChartViewModelItemViewModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $PieChartItemViewModelCopyWith<PieChartItemViewModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PieChartViewModelItemViewModelCopyWith<$Res> {
-  factory $PieChartViewModelItemViewModelCopyWith(
-          PieChartViewModelItemViewModel value,
-          $Res Function(PieChartViewModelItemViewModel) then) =
-      _$PieChartViewModelItemViewModelCopyWithImpl<$Res,
-          PieChartViewModelItemViewModel>;
+abstract class $PieChartItemViewModelCopyWith<$Res> {
+  factory $PieChartItemViewModelCopyWith(PieChartItemViewModel value,
+          $Res Function(PieChartItemViewModel) then) =
+      _$PieChartItemViewModelCopyWithImpl<$Res, PieChartItemViewModel>;
   @useResult
   $Res call({double value, ExpenseCategory category});
 }
 
 /// @nodoc
-class _$PieChartViewModelItemViewModelCopyWithImpl<$Res,
-        $Val extends PieChartViewModelItemViewModel>
-    implements $PieChartViewModelItemViewModelCopyWith<$Res> {
-  _$PieChartViewModelItemViewModelCopyWithImpl(this._value, this._then);
+class _$PieChartItemViewModelCopyWithImpl<$Res,
+        $Val extends PieChartItemViewModel>
+    implements $PieChartItemViewModelCopyWith<$Res> {
+  _$PieChartItemViewModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -67,7 +65,7 @@ class _$PieChartViewModelItemViewModelCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$_PieChartViewModelItemViewModelCopyWith<$Res>
-    implements $PieChartViewModelItemViewModelCopyWith<$Res> {
+    implements $PieChartItemViewModelCopyWith<$Res> {
   factory _$$_PieChartViewModelItemViewModelCopyWith(
           _$_PieChartViewModelItemViewModel value,
           $Res Function(_$_PieChartViewModelItemViewModel) then) =
@@ -79,7 +77,7 @@ abstract class _$$_PieChartViewModelItemViewModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_PieChartViewModelItemViewModelCopyWithImpl<$Res>
-    extends _$PieChartViewModelItemViewModelCopyWithImpl<$Res,
+    extends _$PieChartItemViewModelCopyWithImpl<$Res,
         _$_PieChartViewModelItemViewModel>
     implements _$$_PieChartViewModelItemViewModelCopyWith<$Res> {
   __$$_PieChartViewModelItemViewModelCopyWithImpl(
@@ -120,7 +118,7 @@ class _$_PieChartViewModelItemViewModel
 
   @override
   String toString() {
-    return 'PieChartViewModelItemViewModel(value: $value, category: $category)';
+    return 'PieChartItemViewModel(value: $value, category: $category)';
   }
 
   @override
@@ -145,7 +143,7 @@ class _$_PieChartViewModelItemViewModel
 }
 
 abstract class _PieChartViewModelItemViewModel
-    implements PieChartViewModelItemViewModel {
+    implements PieChartItemViewModel {
   const factory _PieChartViewModelItemViewModel(
           {required final double value,
           required final ExpenseCategory category}) =
