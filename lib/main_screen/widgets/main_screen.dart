@@ -14,9 +14,9 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
-    final TextEditingController expenseItemName = TextEditingController();
-    final TextEditingController expenseItemAmount = TextEditingController();
-    String expenseItemCategory = '';
+    final TextEditingController expenseName = TextEditingController();
+    final TextEditingController expenseAmount = TextEditingController();
+    String expenseCategory = '';
 
     return Scaffold(
       backgroundColor: secondaryColor,
@@ -50,7 +50,7 @@ class MainScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Add item category',
+                          'Add expense category',
                           style: TextStyle(
                             fontSize: 12,
                             color: secondaryTextColor,
@@ -59,12 +59,12 @@ class MainScreen extends StatelessWidget {
                         const SizedBox(height: 5),
                         CategoryDropdownButton(
                           onItemSelected: (item) {
-                            expenseItemCategory = item ?? '';
+                            expenseCategory = item ?? '';
                           },
                         ),
                         const SizedBox(height: 14),
                         const Text(
-                          'Add item name',
+                          'Add expense name',
                           style: TextStyle(
                             fontSize: 12,
                             color: secondaryTextColor,
@@ -74,7 +74,7 @@ class MainScreen extends StatelessWidget {
                         TextField(
                           textInputAction: TextInputAction.next,
                           autofocus: true,
-                          controller: expenseItemName,
+                          controller: expenseName,
                           style: const TextStyle(color: secondaryTextColor),
                           decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
@@ -88,7 +88,7 @@ class MainScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 14),
                         const Text(
-                          'Add item amount',
+                          'Add expense amount',
                           style: TextStyle(
                             fontSize: 12,
                             color: secondaryTextColor,
@@ -98,7 +98,7 @@ class MainScreen extends StatelessWidget {
                         TextField(
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
-                          controller: expenseItemAmount,
+                          controller: expenseAmount,
                           autofocus: true,
                           style: const TextStyle(color: secondaryTextColor),
                           decoration: const InputDecoration(
@@ -128,25 +128,23 @@ class MainScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        if (expenseItemAmount.text != '')
+                        if (expenseAmount.text.isNotEmpty)
                           context.read<MainScreenBloc>().add(
                                 MainScreenEvent.addExpense(
                                   expenseViewModel: ExpenseViewModel(
-                                    name: expenseItemName.text,
-                                    amount:
-                                        double.parse(expenseItemAmount.text),
+                                    name: expenseName.text,
+                                    amount: double.parse(expenseAmount.text),
                                     category: ExpenseCategory.values.firstWhere(
                                         (element) =>
-                                            element.name ==
-                                            expenseItemCategory),
+                                            element.name == expenseCategory),
                                     date: DateTime.now(),
                                   ),
                                 ),
                               );
-                        if (expenseItemName.text != '')
+                        if (expenseName.text.isNotEmpty)
                           Navigator.pop(context, 'OK');
-                        expenseItemName.clear();
-                        expenseItemAmount.clear();
+                        expenseName.clear();
+                        expenseAmount.clear();
                       },
                       child: const Text(
                         'OK',

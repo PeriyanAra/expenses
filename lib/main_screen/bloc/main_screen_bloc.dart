@@ -21,16 +21,16 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     AddExpenseEvent event,
     Emitter emit,
   ) {
-    List<ExpenseViewModel> expenseItems = [
+    List<ExpenseViewModel> expenses = [
       ...state.mainScreenViewModel.expenses
     ];
 
-    expenseItems.add(event.expenseViewModel);
+    expenses.add(event.expenseViewModel);
 
     emit(
       MainScreenLoadedState(
         mainScreenViewModel: MainScreenViewModel(
-          expenses: expenseItems,
+          expenses: expenses,
         ),
       ),
     );
