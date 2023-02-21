@@ -46,3 +46,16 @@ app.*.map.json
 
 
 *.pubspec.lock
+
+# Generated files
+*.g.dart
+*.gr.dart
+*.freezed.dart
+*.gen.dart
+*.moor.dart
+*.mocks.dart
+*.hive.dart
+*.config.dart
+*.chopper.dart
+/lib/generated/
+android/local.properties
