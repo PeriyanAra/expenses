@@ -6,5 +6,5 @@ class MainScreenState with _$MainScreenState {
 
   const factory MainScreenState.loaded({
     required MainScreenViewModel mainScreenViewModel,
-  }) = MainScreenLoadedStatae;
+  }) = MainScreenLoadedState;
 }
