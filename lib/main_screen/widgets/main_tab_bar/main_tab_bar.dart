@@ -14,7 +14,7 @@ class MainTabBar extends StatelessWidget {
     required this.height,
   }) : super(key: key);
 
-  static final tabNames = ['List', 'LineChart', 'BarChart', 'PieChart'];
+  static final tabNames = ['List','BarChart' , 'LineChart', 'PieChart'];
 
   @override
   Widget build(BuildContext context) {
