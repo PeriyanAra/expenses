@@ -8,12 +8,35 @@ part 'main_screen_state.dart';
 part 'main_screen_bloc.freezed.dart';
 
 class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
-  MainScreenBloc() : super(MainScreenState.initial()) {
+  MainScreenBloc()
+      : super(
+          MainScreenState.initial(
+            mainScreenViewModel: MainScreenViewModel(
+              allAmount: 0,
+              expenses: [],
+            ),
+          ),
+        ) {
     on<AddExpenseEvent>(_addExpenseEvent);
   }
 
   _addExpenseEvent(
     AddExpenseEvent event,
     Emitter emit,
-  ) {}
+  ) {
+    List<ExpenseViewModel> expenseItems = [
+      ...state.mainScreenViewModel.expenses
+    ];
+
+    expenseItems.add(event.expenseViewModel);
+    
+    emit(
+      MainScreenLoadedState(
+        mainScreenViewModel: MainScreenViewModel(
+          allAmount: 0,
+          expenses: expenseItems,
+        ),
+      ),
+    );
+  }
 }
