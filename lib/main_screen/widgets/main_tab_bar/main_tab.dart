@@ -1,9 +1,14 @@
+import 'package:expenses/main_screen/mocks/expenses_list.dart';
+import 'package:expenses/main_screen/models/chart_view_models/bar_chart_view_model.dart';
+import 'package:expenses/main_screen/widgets/custom_bar_chart.dart';
 import 'package:expenses/main_screen/mocks/pie_chart_view_model.dart';
 import 'package:expenses/main_screen/widgets/custom_pie_chart.dart';
 import 'package:expenses/main_screen/widgets/tabs/list_tab.dart';
 import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab_bar.dart';
 import 'package:expenses/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+
+
 
 class MainTab extends StatefulWidget {
   const MainTab({
@@ -58,8 +63,10 @@ class _MainTabState extends State<MainTab> with TickerProviderStateMixin {
                 controller: _tabController,
                 children: [
                   ListTab(),
-                  Container(
-                    color: Colors.red,
+                  CustomBarChart(
+                    viewModel: BarChartViewModel.fromExpenses(
+                      expenses,
+                    ),
                   ),
                   Container(
                     color: Colors.black,
