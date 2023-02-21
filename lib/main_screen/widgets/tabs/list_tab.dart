@@ -22,6 +22,8 @@ class _ListTabState extends State<ListTab> {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             itemCount: state.mainScreenViewModel.expenses.length,
             itemBuilder: (context, index) {
+              final expense =  state.mainScreenViewModel.expenses[index];
+
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -35,15 +37,14 @@ class _ListTabState extends State<ListTab> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Text(
-                          state.mainScreenViewModel.expenses[index].date
+                          expense.date
                               .convertDateToddMMyyyy(),
                           style: TextStyle(color: primaryTextColor),
                         ),
                       ),
                     ),
-                  } else if (state
-                          .mainScreenViewModel.expenses[index].date.month !=
-                      state.mainScreenViewModel.expenses[index - 1].date
+                  } else if (expense.date.month !=
+                     expense.date
                           .month) ...{
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 15.0),
@@ -54,7 +55,7 @@ class _ListTabState extends State<ListTab> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Text(
-                          state.mainScreenViewModel.expenses[index].date
+                          expense.date
                               .convertDateToddMMyyyy(),
                           style: TextStyle(color: primaryTextColor),
                         ),
@@ -71,7 +72,10 @@ class _ListTabState extends State<ListTab> {
                       color: secondaryColor,
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
                     ),
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 16,
+                      horizontal: 13,
+                    ),
                     child: Column(
                       children: [
                         Row(
@@ -83,7 +87,7 @@ class _ListTabState extends State<ListTab> {
                                 SizedBox(
                                   width: MediaQuery.of(context).size.width * .6,
                                   child: Text(
-                                    state.mainScreenViewModel.expenses[index]
+                                    expense
                                         .name,
                                     style: appTheme.textTheme.title1,
                                     overflow: TextOverflow.clip,
@@ -92,7 +96,7 @@ class _ListTabState extends State<ListTab> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5.0),
                                   child: Text(
-                                    state.mainScreenViewModel.expenses[index]
+                                    expense
                                         .category.name,
                                     style: appTheme.textTheme.subhead.copyWith(
                                         color:
@@ -101,10 +105,28 @@ class _ListTabState extends State<ListTab> {
                                 ),
                               ],
                             ),
-                            Text(
-                              '${state.mainScreenViewModel.expenses[index].amount} \$',
-                              style: appTheme.textTheme.body,
-                            )
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * .15,
+                              child: Text(
+                                '${expense.amount} \$',
+                                style: appTheme.textTheme.body,
+                                overflow: TextOverflow.clip,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                context.read<MainScreenBloc>().add(
+                                      MainScreenEvent.removeExpense(
+                                        id: state.mainScreenViewModel
+                                            .expenses[index].id,
+                                      ),
+                                    );
+                              },
+                              icon: Icon(
+                                Icons.delete,
+                                color: containerColor,
+                              ),
+                            ),
                           ],
                         )
                       ],

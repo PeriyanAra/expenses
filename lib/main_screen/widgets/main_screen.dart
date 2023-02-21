@@ -146,7 +146,7 @@ class _MainScreenState extends State<MainScreen> {
                         final String id =
                             "${DateTime.now()}${Random().nextInt(1000)}";
 
-                        if (expenseAmount.text.isNotEmpty)
+                        if (expenseAmount.text.isNotEmpty && expenseName.text.isNotEmpty)
                           context.read<MainScreenBloc>().add(
                                 MainScreenEvent.addExpense(
                                   expenseViewModel: ExpenseViewModel(
@@ -161,10 +161,13 @@ class _MainScreenState extends State<MainScreen> {
                                   ),
                                 ),
                               );
-                        if (expenseName.text.isNotEmpty)
-                          Navigator.pop(context, 'OK');
+                        if (expenseName.text.isNotEmpty && expenseAmount.text.isNotEmpty)
+                        {
+                           Navigator.pop(context, 'OK');
                         expenseName.clear();
                         expenseAmount.clear();
+                        }
+                         
                       },
                       child: const Text(
                         'OK',

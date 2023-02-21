@@ -1,5 +1,10 @@
+import 'package:expenses/main_screen/bloc/main_screen_bloc.dart';
+import 'package:expenses/main_screen/enums/expense_category.dart';
+import 'package:expenses/main_screen/enums/filter_param.dart';
+import 'package:expenses/main_screen/widgets/category_pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:expenses/theme/export.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FilterList extends StatefulWidget {
   const FilterList({
@@ -22,9 +27,7 @@ class _FilterListState extends State<FilterList> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: List.generate(
-        filterNames.length,
-         (index) {
+      children: List.generate(filterNames.length, (index) {
         return GestureDetector(
           onTap: () {
             if (selectedIndex != index) {
@@ -32,15 +35,27 @@ class _FilterListState extends State<FilterList> {
                 selectedIndex = index;
               });
             }
+            if (selectedIndex == 3) {
+              showDialog(
+                context: context,
+                builder: (context) => CategoryPopUp(),
+              );
+            } else {
+              context.read<MainScreenBloc>().add(
+                    MainScreenEvent.filterExpenseByDate(
+                      filterParam: FilterParam.values[index],
+                    ),
+                  );
+            }
           },
           child: Container(
-            width: screenWidth * .17,
+            width: screenWidth * .19,
             height: screenHeight * .04,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: selectedIndex == index
                   ? white.withOpacity(0.2)
-                              : secondaryColor,
+                  : secondaryColor,
             ),
             alignment: Alignment.center,
             child: Text(
@@ -50,6 +65,6 @@ class _FilterListState extends State<FilterList> {
           ),
         );
       }),
-    ); 
+    );
   }
 }
