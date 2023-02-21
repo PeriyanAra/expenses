@@ -18,7 +18,7 @@ class CategoryPopUp extends StatelessWidget {
       ),
       backgroundColor: secondaryColor,
       title: Text(
-        'Add expense',
+        'Select Filter Category',
         style: appTheme.textTheme.title2.copyWith(color: secondaryTextColor),
         textAlign: TextAlign.center,
       ),
@@ -39,9 +39,18 @@ class CategoryPopUp extends StatelessWidget {
                       );
                   Navigator.pop(context);
                 },
-                child: Text(
-                  ExpenseCategory.values[index].name,
-                  style: TextStyle(color: primaryTextColor),
+                child: Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width * .7,
+                  height: MediaQuery.of(context).size.height * .05,
+                  decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(20.0)
+                  ),
+                  child: Text(
+                    ExpenseCategory.values[index].name,
+                    style: TextStyle(color: primaryTextColor),
+                  ),
                 ),
               );
             },
