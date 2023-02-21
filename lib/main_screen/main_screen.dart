@@ -37,7 +37,7 @@ class MainScreen extends StatelessWidget {
                   color: Color(0x1F77839A),
                 ),
               ),
-              child: Icon(Icons.add),
+              // child: Icon(Icons.add),
             ),
           )
         ],
