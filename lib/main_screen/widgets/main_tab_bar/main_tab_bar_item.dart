@@ -21,7 +21,7 @@ class MainTabBarItem extends StatelessWidget {
         tabController.animateTo(index);
       },
       child: Container(
-        height: height * .14,
+        height: 40,
         padding: EdgeInsets.all(10.0),
         alignment: Alignment.center,
         decoration: BoxDecoration(
