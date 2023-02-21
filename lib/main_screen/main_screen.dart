@@ -1,3 +1,6 @@
+import 'package:expenses/main_screen/widgets/bottom_sheent_content.dart';
+import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab.dart';
+import 'package:expenses/theme/export.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatelessWidget {
@@ -5,15 +8,25 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    return Scaffold(
+      backgroundColor: secondaryColor,
       appBar: AppBar(
+        backgroundColor: primaryColor,
         title: Text(
-          'spending',
+          'Spending',
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                backgroundColor: Colors.transparent,
+                builder: (context) => BottomSheetContent(),
+              );
+            },
             icon: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
@@ -29,6 +42,23 @@ class MainScreen extends StatelessWidget {
           )
         ],
       ),
-    ));
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: screenWidth,
+                height: screenHeight * .05,
+                alignment: Alignment.center,
+                child: Text('Add'),
+              )
+            ],
+          ),
+          MainTab(),
+        ],
+      ),
+    );
   }
 }
