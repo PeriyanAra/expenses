@@ -19,19 +19,17 @@ class MainTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height * .11,
+      padding: EdgeInsets.symmetric(vertical: 10.0),
       width: width,
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: secondaryColor,
-        borderRadius: BorderRadius.circular(30),
-      ),
+      color: secondaryColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(
           tabController.length,
           (index) {
             return MainTabBarItem(
+              height: height,
               index: index,
               tabController: tabController,
               tabBarName: tabNames[index],

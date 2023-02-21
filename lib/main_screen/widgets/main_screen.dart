@@ -2,8 +2,15 @@ import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab.dart';
 import 'package:expenses/theme/export.dart';
 import 'package:flutter/material.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,43 +44,94 @@ class MainScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: screenHeight * .05,
-                alignment: Alignment.center,
-                child: Text(
-                  'All',
-                  style: TextStyle(color: primaryTextColor),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      index = 0;
+                    });
+                  },
+                  child: Container(
+                  width: screenWidth*.15,
+                  height: screenHeight*.04,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: index != 0 ? secondaryColor : primaryColor,
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      'All',
+                      style: TextStyle(color: primaryTextColor),
+                    ),
+                  ),
                 ),
-              ),
-              Container(
-                height: screenHeight * .05,
-                alignment: Alignment.center,
-                child: Text(
-                  'Today',
-                  style: TextStyle(color: primaryTextColor),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      index = 1;
+                    });
+                  },
+                  child: Container(
+                   width: screenWidth*.17,
+                  height: screenHeight*.04,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: index != 1 ? secondaryColor : primaryColor,
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Today',
+                      style: TextStyle(color: primaryTextColor),
+                    ),
+                  ),
                 ),
-              ),
-              Container(
-                height: screenHeight * .05,
-                alignment: Alignment.center,
-                child: Text(
-                  'This Week',
-                  style: TextStyle(color: primaryTextColor),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      index = 2;
+                    });
+                  },
+                  child: Container(
+                   width: screenWidth*.17,
+                  height: screenHeight*.04,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: index != 2 ? secondaryColor : primaryColor,
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      'This Week',
+                      style: TextStyle(color: primaryTextColor),
+                    ),
+                  ),
                 ),
-              ),
-              Container(
-                height: screenHeight * .05,
-                alignment: Alignment.center,
-                child: Text(
-                  'Category',
-                  style: TextStyle(color: primaryTextColor),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      index = 3;
+                    });
+                  },
+                  child: Container(
+                   width: screenWidth*.17,
+                  height: screenHeight*.04,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: index != 3 ? secondaryColor : primaryColor,
+                    ),
+                    child: Text(
+                      'Category',
+                      style: TextStyle(color: primaryTextColor),
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           MainTab(),
         ],
