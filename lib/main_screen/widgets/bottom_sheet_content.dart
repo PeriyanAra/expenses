@@ -12,6 +12,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
+    
     return Padding(
       padding: EdgeInsets.fromLTRB(
         0,

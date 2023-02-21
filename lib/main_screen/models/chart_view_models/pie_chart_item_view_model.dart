@@ -4,8 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'pie_chart_item_view_model.freezed.dart';
 
 @freezed
-class PieChartViewModelItemViewModel with _$PieChartViewModelItemViewModel {
-  const factory PieChartViewModelItemViewModel({
+class PieChartItemViewModel with _$PieChartItemViewModel {
+  const factory PieChartItemViewModel({
     required double value,
     required ExpenseCategory category,
   }) = _PieChartViewModelItemViewModel;

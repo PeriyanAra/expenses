@@ -20,7 +20,7 @@ class MainTabBar extends StatelessWidget {
       width: width,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: Colors.grey,
+        color: secondaryColor,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Row(
@@ -34,11 +34,13 @@ class MainTabBar extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color:
-                    tabController.index == 0 ? Colors.grey : transparent,
+                color: tabController.index == 0 ? Colors.grey : transparent,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: Text('List'),
+              child: Text(
+                'List',
+                style: TextStyle(color: primaryTextColor),
+              ),
             ),
           ),
           GestureDetector(
@@ -52,7 +54,9 @@ class MainTabBar extends StatelessWidget {
                     tabController.index == 1 ? Colors.grey : Colors.transparent,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: Text('List1'),
+              child: Text('List1',
+                style: TextStyle(color: primaryTextColor),
+              ),
             ),
           ),
           GestureDetector(
@@ -63,10 +67,12 @@ class MainTabBar extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                 color:
-                    tabController.index == 2 ? Colors.grey : Colors.transparent,
+                    tabController.index == 2 ?containerColor : Colors.transparent,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: Text('List2'),
+              child: Text('List2',
+                style: TextStyle(color: primaryTextColor),
+              ),
             ),
           ),
           GestureDetector(
@@ -80,7 +86,9 @@ class MainTabBar extends StatelessWidget {
                     tabController.index == 3 ? Colors.grey : Colors.transparent,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: Text('List3'),
+              child: Text('List3',
+                style: TextStyle(color: primaryTextColor),
+              ),
             ),
           ),
         ],

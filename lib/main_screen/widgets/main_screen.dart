@@ -1,4 +1,3 @@
-import 'package:expenses/main_screen/widgets/bottom_sheet_content.dart';
 import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab.dart';
 import 'package:expenses/theme/export.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,6 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -20,13 +18,7 @@ class MainScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                backgroundColor: Colors.transparent,
-                builder: (context) => BottomSheetContent(),
-              );
-            },
+            onPressed: () {},
             icon: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
@@ -45,15 +37,41 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: screenWidth,
                 height: screenHeight * .05,
                 alignment: Alignment.center,
-                child: Text('Add'),
-              )
+                child: Text(
+                  'All',
+                  style: TextStyle(color: primaryTextColor),
+                ),
+              ),
+              Container(
+                height: screenHeight * .05,
+                alignment: Alignment.center,
+                child: Text(
+                  'Today',
+                  style: TextStyle(color: primaryTextColor),
+                ),
+              ),
+              Container(
+                height: screenHeight * .05,
+                alignment: Alignment.center,
+                child: Text(
+                  'This Week',
+                  style: TextStyle(color: primaryTextColor),
+                ),
+              ),
+              Container(
+                height: screenHeight * .05,
+                alignment: Alignment.center,
+                child: Text(
+                  'Category',
+                  style: TextStyle(color: primaryTextColor),
+                ),
+              ),
             ],
           ),
           MainTab(),
