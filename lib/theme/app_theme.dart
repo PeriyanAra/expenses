@@ -70,7 +70,7 @@ extension CustomTextTheme on TextTheme {
     return const TextStyle(
       fontSize: 17,
       fontWeight: FontWeight.normal,
-      color: primaryTextColor,
+      color: secondaryTextColor,
       fontFamily: mainFont,
     );
   }
