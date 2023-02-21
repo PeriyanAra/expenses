@@ -4,7 +4,7 @@ import 'package:expenses/main_screen/enums/filter_param.dart';
 import 'package:expenses/main_screen/models/expense_view_model.dart';
 import 'package:expenses/main_screen/models/main_screen_view_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:expenses/utils/date_time_convertor.dart' show DateConvertToWeek;
+import 'package:jiffy/jiffy.dart';
 
 part 'main_screen_event.dart';
 part 'main_screen_state.dart';
@@ -110,10 +110,11 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     } else if (event.filterParam == FilterParam.thisWeek) {
       allExpenses.forEach(
         (element) {
-          final checkIfInThisWeek = currentDate.weekOfMonth == element.date.weekOfMonth;
-
+          final currentWeekNumber = Jiffy(currentDate).week;
+          final expenseWeekNumber = Jiffy(element.date).week;
+          
+          final checkIfInThisWeek = currentWeekNumber == expenseWeekNumber;
           if (checkIfInThisWeek &&
-              element.date.month == currentDate.month &&
               element.date.year == currentDate.year) {
             expenses.add(element);
           }
