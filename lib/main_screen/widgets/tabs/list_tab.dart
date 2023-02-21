@@ -1,5 +1,4 @@
 import 'package:expenses/main_screen/bloc/main_screen_bloc.dart';
-import 'package:expenses/main_screen/mocks/main_screen_view_model_mock.dart';
 import 'package:expenses/theme/export.dart';
 import 'package:flutter/material.dart';
 import 'package:expenses/utils/date_time_convertor.dart'
@@ -23,26 +22,42 @@ class _ListTabState extends State<ListTab> {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             itemCount: state.mainScreenViewModel.expenses.length,
             itemBuilder: (context, index) {
-              final expense = mockMainScreenViewModel.expenses[index];
-
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (index == 0) ...{
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 10.0),
-                      child: Text(
-                        expense.date.convertDateToddMMyyyy(),
-                        style: TextStyle(color: primaryTextColor),
+                      child: Container(
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          color: containerColor.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Text(
+                          state.mainScreenViewModel.expenses[index].date
+                              .convertDateToddMMyyyy(),
+                          style: TextStyle(color: primaryTextColor),
+                        ),
                       ),
                     ),
-                  } else if (expense.date !=
-                      mockMainScreenViewModel.expenses[index - 1].date) ...{
+                  } else if (state
+                          .mainScreenViewModel.expenses[index].date.month !=
+                      state.mainScreenViewModel.expenses[index - 1].date
+                          .month) ...{
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 15.0),
-                      child: Text(
-                        expense.date.convertDateToddMMyyyy(),
-                        style: TextStyle(color: primaryTextColor),
+                      child: Container(
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          color: containerColor.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Text(
+                          state.mainScreenViewModel.expenses[index].date
+                              .convertDateToddMMyyyy(),
+                          style: TextStyle(color: primaryTextColor),
+                        ),
                       ),
                     ),
                   } else ...{
@@ -74,10 +89,15 @@ class _ListTabState extends State<ListTab> {
                                     overflow: TextOverflow.clip,
                                   ),
                                 ),
-                                Text(
-                                  state.mainScreenViewModel.expenses[index]
-                                      .category.name,
-                                  style: appTheme.textTheme.body,
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5.0),
+                                  child: Text(
+                                    state.mainScreenViewModel.expenses[index]
+                                        .category.name,
+                                    style: appTheme.textTheme.subhead.copyWith(
+                                        color:
+                                            primaryTextColor.withOpacity(0.4)),
+                                  ),
                                 ),
                               ],
                             ),
