@@ -20,7 +20,7 @@ mixin _$MainScreenEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
     required TResult Function(String id) removeExpense,
-    required TResult Function(FilterParam filterParam) filterExpenseByDateTime,
+    required TResult Function(FilterParam filterParam) filterExpenseByDate,
     required TResult Function(ExpenseCategory expenseCategory)
         filterExpenseByCategory,
   }) =>
@@ -29,7 +29,7 @@ mixin _$MainScreenEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
     TResult? Function(String id)? removeExpense,
-    TResult? Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult? Function(FilterParam filterParam)? filterExpenseByDate,
     TResult? Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ mixin _$MainScreenEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
     TResult Function(String id)? removeExpense,
-    TResult Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult Function(FilterParam filterParam)? filterExpenseByDate,
     TResult Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
     required TResult orElse(),
   }) =>
@@ -47,7 +47,7 @@ mixin _$MainScreenEvent {
     required TResult Function(AddExpenseEvent value) addExpense,
     required TResult Function(RemoveExpenseEvent value) removeExpense,
     required TResult Function(FilterExpenseByDateEvent value)
-        filterExpenseByDateTime,
+        filterExpenseByDate,
     required TResult Function(FilterExpenseByCategoryEvent value)
         filterExpenseByCategory,
   }) =>
@@ -56,8 +56,7 @@ mixin _$MainScreenEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddExpenseEvent value)? addExpense,
     TResult? Function(RemoveExpenseEvent value)? removeExpense,
-    TResult? Function(FilterExpenseByDateEvent value)?
-        filterExpenseByDateTime,
+    TResult? Function(FilterExpenseByDateEvent value)? filterExpenseByDate,
     TResult? Function(FilterExpenseByCategoryEvent value)?
         filterExpenseByCategory,
   }) =>
@@ -66,8 +65,7 @@ mixin _$MainScreenEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddExpenseEvent value)? addExpense,
     TResult Function(RemoveExpenseEvent value)? removeExpense,
-    TResult Function(FilterExpenseByDateEvent value)?
-        filterExpenseByDateTime,
+    TResult Function(FilterExpenseByDateEvent value)? filterExpenseByDate,
     TResult Function(FilterExpenseByCategoryEvent value)?
         filterExpenseByCategory,
     required TResult orElse(),
@@ -170,7 +168,7 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
     required TResult Function(String id) removeExpense,
-    required TResult Function(FilterParam filterParam) filterExpenseByDateTime,
+    required TResult Function(FilterParam filterParam) filterExpenseByDate,
     required TResult Function(ExpenseCategory expenseCategory)
         filterExpenseByCategory,
   }) {
@@ -182,7 +180,7 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
     TResult? Function(String id)? removeExpense,
-    TResult? Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult? Function(FilterParam filterParam)? filterExpenseByDate,
     TResult? Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
   }) {
     return addExpense?.call(expenseViewModel);
@@ -193,7 +191,7 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
     TResult Function(String id)? removeExpense,
-    TResult Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult Function(FilterParam filterParam)? filterExpenseByDate,
     TResult Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
     required TResult orElse(),
   }) {
@@ -209,7 +207,7 @@ class _$AddExpenseEvent implements AddExpenseEvent {
     required TResult Function(AddExpenseEvent value) addExpense,
     required TResult Function(RemoveExpenseEvent value) removeExpense,
     required TResult Function(FilterExpenseByDateEvent value)
-        filterExpenseByDateTime,
+        filterExpenseByDate,
     required TResult Function(FilterExpenseByCategoryEvent value)
         filterExpenseByCategory,
   }) {
@@ -221,8 +219,7 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddExpenseEvent value)? addExpense,
     TResult? Function(RemoveExpenseEvent value)? removeExpense,
-    TResult? Function(FilterExpenseByDateEvent value)?
-        filterExpenseByDateTime,
+    TResult? Function(FilterExpenseByDateEvent value)? filterExpenseByDate,
     TResult? Function(FilterExpenseByCategoryEvent value)?
         filterExpenseByCategory,
   }) {
@@ -234,8 +231,7 @@ class _$AddExpenseEvent implements AddExpenseEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddExpenseEvent value)? addExpense,
     TResult Function(RemoveExpenseEvent value)? removeExpense,
-    TResult Function(FilterExpenseByDateEvent value)?
-        filterExpenseByDateTime,
+    TResult Function(FilterExpenseByDateEvent value)? filterExpenseByDate,
     TResult Function(FilterExpenseByCategoryEvent value)?
         filterExpenseByCategory,
     required TResult orElse(),
@@ -324,7 +320,7 @@ class _$RemoveExpenseEvent implements RemoveExpenseEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
     required TResult Function(String id) removeExpense,
-    required TResult Function(FilterParam filterParam) filterExpenseByDateTime,
+    required TResult Function(FilterParam filterParam) filterExpenseByDate,
     required TResult Function(ExpenseCategory expenseCategory)
         filterExpenseByCategory,
   }) {
@@ -336,7 +332,7 @@ class _$RemoveExpenseEvent implements RemoveExpenseEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
     TResult? Function(String id)? removeExpense,
-    TResult? Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult? Function(FilterParam filterParam)? filterExpenseByDate,
     TResult? Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
   }) {
     return removeExpense?.call(id);
@@ -347,7 +343,7 @@ class _$RemoveExpenseEvent implements RemoveExpenseEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
     TResult Function(String id)? removeExpense,
-    TResult Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult Function(FilterParam filterParam)? filterExpenseByDate,
     TResult Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
     required TResult orElse(),
   }) {
@@ -363,7 +359,7 @@ class _$RemoveExpenseEvent implements RemoveExpenseEvent {
     required TResult Function(AddExpenseEvent value) addExpense,
     required TResult Function(RemoveExpenseEvent value) removeExpense,
     required TResult Function(FilterExpenseByDateEvent value)
-        filterExpenseByDateTime,
+        filterExpenseByDate,
     required TResult Function(FilterExpenseByCategoryEvent value)
         filterExpenseByCategory,
   }) {
@@ -375,8 +371,7 @@ class _$RemoveExpenseEvent implements RemoveExpenseEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddExpenseEvent value)? addExpense,
     TResult? Function(RemoveExpenseEvent value)? removeExpense,
-    TResult? Function(FilterExpenseByDateEvent value)?
-        filterExpenseByDateTime,
+    TResult? Function(FilterExpenseByDateEvent value)? filterExpenseByDate,
     TResult? Function(FilterExpenseByCategoryEvent value)?
         filterExpenseByCategory,
   }) {
@@ -388,8 +383,7 @@ class _$RemoveExpenseEvent implements RemoveExpenseEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddExpenseEvent value)? addExpense,
     TResult Function(RemoveExpenseEvent value)? removeExpense,
-    TResult Function(FilterExpenseByDateEvent value)?
-        filterExpenseByDateTime,
+    TResult Function(FilterExpenseByDateEvent value)? filterExpenseByDate,
     TResult Function(FilterExpenseByCategoryEvent value)?
         filterExpenseByCategory,
     required TResult orElse(),
@@ -412,22 +406,20 @@ abstract class RemoveExpenseEvent implements MainScreenEvent {
 }
 
 /// @nodoc
-abstract class _$$FilterExpenseByDateTimeEventCopyWith<$Res> {
-  factory _$$FilterExpenseByDateTimeEventCopyWith(
-          _$FilterExpenseByDateTimeEvent value,
-          $Res Function(_$FilterExpenseByDateTimeEvent) then) =
-      __$$FilterExpenseByDateTimeEventCopyWithImpl<$Res>;
+abstract class _$$FilterExpenseByDateEventCopyWith<$Res> {
+  factory _$$FilterExpenseByDateEventCopyWith(_$FilterExpenseByDateEvent value,
+          $Res Function(_$FilterExpenseByDateEvent) then) =
+      __$$FilterExpenseByDateEventCopyWithImpl<$Res>;
   @useResult
   $Res call({FilterParam filterParam});
 }
 
 /// @nodoc
-class __$$FilterExpenseByDateTimeEventCopyWithImpl<$Res>
-    extends _$MainScreenEventCopyWithImpl<$Res, _$FilterExpenseByDateTimeEvent>
-    implements _$$FilterExpenseByDateTimeEventCopyWith<$Res> {
-  __$$FilterExpenseByDateTimeEventCopyWithImpl(
-      _$FilterExpenseByDateTimeEvent _value,
-      $Res Function(_$FilterExpenseByDateTimeEvent) _then)
+class __$$FilterExpenseByDateEventCopyWithImpl<$Res>
+    extends _$MainScreenEventCopyWithImpl<$Res, _$FilterExpenseByDateEvent>
+    implements _$$FilterExpenseByDateEventCopyWith<$Res> {
+  __$$FilterExpenseByDateEventCopyWithImpl(_$FilterExpenseByDateEvent _value,
+      $Res Function(_$FilterExpenseByDateEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -435,7 +427,7 @@ class __$$FilterExpenseByDateTimeEventCopyWithImpl<$Res>
   $Res call({
     Object? filterParam = null,
   }) {
-    return _then(_$FilterExpenseByDateTimeEvent(
+    return _then(_$FilterExpenseByDateEvent(
       filterParam: null == filterParam
           ? _value.filterParam
           : filterParam // ignore: cast_nullable_to_non_nullable
@@ -446,22 +438,22 @@ class __$$FilterExpenseByDateTimeEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FilterExpenseByDateTimeEvent implements FilterExpenseByDateEvent {
-  const _$FilterExpenseByDateTimeEvent({required this.filterParam});
+class _$FilterExpenseByDateEvent implements FilterExpenseByDateEvent {
+  const _$FilterExpenseByDateEvent({required this.filterParam});
 
   @override
   final FilterParam filterParam;
 
   @override
   String toString() {
-    return 'MainScreenEvent.filterExpenseByDateTime(filterParam: $filterParam)';
+    return 'MainScreenEvent.filterExpenseByDate(filterParam: $filterParam)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FilterExpenseByDateTimeEvent &&
+            other is _$FilterExpenseByDateEvent &&
             (identical(other.filterParam, filterParam) ||
                 other.filterParam == filterParam));
   }
@@ -472,20 +464,21 @@ class _$FilterExpenseByDateTimeEvent implements FilterExpenseByDateEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FilterExpenseByDateTimeEventCopyWith<_$FilterExpenseByDateTimeEvent>
-      get copyWith => __$$FilterExpenseByDateTimeEventCopyWithImpl<
-          _$FilterExpenseByDateTimeEvent>(this, _$identity);
+  _$$FilterExpenseByDateEventCopyWith<_$FilterExpenseByDateEvent>
+      get copyWith =>
+          __$$FilterExpenseByDateEventCopyWithImpl<_$FilterExpenseByDateEvent>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
     required TResult Function(String id) removeExpense,
-    required TResult Function(FilterParam filterParam) filterExpenseByDateTime,
+    required TResult Function(FilterParam filterParam) filterExpenseByDate,
     required TResult Function(ExpenseCategory expenseCategory)
         filterExpenseByCategory,
   }) {
-    return filterExpenseByDateTime(filterParam);
+    return filterExpenseByDate(filterParam);
   }
 
   @override
@@ -493,10 +486,10 @@ class _$FilterExpenseByDateTimeEvent implements FilterExpenseByDateEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
     TResult? Function(String id)? removeExpense,
-    TResult? Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult? Function(FilterParam filterParam)? filterExpenseByDate,
     TResult? Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
   }) {
-    return filterExpenseByDateTime?.call(filterParam);
+    return filterExpenseByDate?.call(filterParam);
   }
 
   @override
@@ -504,12 +497,12 @@ class _$FilterExpenseByDateTimeEvent implements FilterExpenseByDateEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
     TResult Function(String id)? removeExpense,
-    TResult Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult Function(FilterParam filterParam)? filterExpenseByDate,
     TResult Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
     required TResult orElse(),
   }) {
-    if (filterExpenseByDateTime != null) {
-      return filterExpenseByDateTime(filterParam);
+    if (filterExpenseByDate != null) {
+      return filterExpenseByDate(filterParam);
     }
     return orElse();
   }
@@ -520,11 +513,11 @@ class _$FilterExpenseByDateTimeEvent implements FilterExpenseByDateEvent {
     required TResult Function(AddExpenseEvent value) addExpense,
     required TResult Function(RemoveExpenseEvent value) removeExpense,
     required TResult Function(FilterExpenseByDateEvent value)
-        filterExpenseByDateTime,
+        filterExpenseByDate,
     required TResult Function(FilterExpenseByCategoryEvent value)
         filterExpenseByCategory,
   }) {
-    return filterExpenseByDateTime(this);
+    return filterExpenseByDate(this);
   }
 
   @override
@@ -532,12 +525,11 @@ class _$FilterExpenseByDateTimeEvent implements FilterExpenseByDateEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddExpenseEvent value)? addExpense,
     TResult? Function(RemoveExpenseEvent value)? removeExpense,
-    TResult? Function(FilterExpenseByDateEvent value)?
-        filterExpenseByDateTime,
+    TResult? Function(FilterExpenseByDateEvent value)? filterExpenseByDate,
     TResult? Function(FilterExpenseByCategoryEvent value)?
         filterExpenseByCategory,
   }) {
-    return filterExpenseByDateTime?.call(this);
+    return filterExpenseByDate?.call(this);
   }
 
   @override
@@ -545,14 +537,13 @@ class _$FilterExpenseByDateTimeEvent implements FilterExpenseByDateEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddExpenseEvent value)? addExpense,
     TResult Function(RemoveExpenseEvent value)? removeExpense,
-    TResult Function(FilterExpenseByDateEvent value)?
-        filterExpenseByDateTime,
+    TResult Function(FilterExpenseByDateEvent value)? filterExpenseByDate,
     TResult Function(FilterExpenseByCategoryEvent value)?
         filterExpenseByCategory,
     required TResult orElse(),
   }) {
-    if (filterExpenseByDateTime != null) {
-      return filterExpenseByDateTime(this);
+    if (filterExpenseByDate != null) {
+      return filterExpenseByDate(this);
     }
     return orElse();
   }
@@ -560,12 +551,11 @@ class _$FilterExpenseByDateTimeEvent implements FilterExpenseByDateEvent {
 
 abstract class FilterExpenseByDateEvent implements MainScreenEvent {
   const factory FilterExpenseByDateEvent(
-          {required final FilterParam filterParam}) =
-      _$FilterExpenseByDateTimeEvent;
+      {required final FilterParam filterParam}) = _$FilterExpenseByDateEvent;
 
   FilterParam get filterParam;
   @JsonKey(ignore: true)
-  _$$FilterExpenseByDateTimeEventCopyWith<_$FilterExpenseByDateTimeEvent>
+  _$$FilterExpenseByDateEventCopyWith<_$FilterExpenseByDateEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -639,7 +629,7 @@ class _$FilterExpenseByCategoryEvent implements FilterExpenseByCategoryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(ExpenseViewModel expenseViewModel) addExpense,
     required TResult Function(String id) removeExpense,
-    required TResult Function(FilterParam filterParam) filterExpenseByDateTime,
+    required TResult Function(FilterParam filterParam) filterExpenseByDate,
     required TResult Function(ExpenseCategory expenseCategory)
         filterExpenseByCategory,
   }) {
@@ -651,7 +641,7 @@ class _$FilterExpenseByCategoryEvent implements FilterExpenseByCategoryEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ExpenseViewModel expenseViewModel)? addExpense,
     TResult? Function(String id)? removeExpense,
-    TResult? Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult? Function(FilterParam filterParam)? filterExpenseByDate,
     TResult? Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
   }) {
     return filterExpenseByCategory?.call(expenseCategory);
@@ -662,7 +652,7 @@ class _$FilterExpenseByCategoryEvent implements FilterExpenseByCategoryEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ExpenseViewModel expenseViewModel)? addExpense,
     TResult Function(String id)? removeExpense,
-    TResult Function(FilterParam filterParam)? filterExpenseByDateTime,
+    TResult Function(FilterParam filterParam)? filterExpenseByDate,
     TResult Function(ExpenseCategory expenseCategory)? filterExpenseByCategory,
     required TResult orElse(),
   }) {
@@ -678,7 +668,7 @@ class _$FilterExpenseByCategoryEvent implements FilterExpenseByCategoryEvent {
     required TResult Function(AddExpenseEvent value) addExpense,
     required TResult Function(RemoveExpenseEvent value) removeExpense,
     required TResult Function(FilterExpenseByDateEvent value)
-        filterExpenseByDateTime,
+        filterExpenseByDate,
     required TResult Function(FilterExpenseByCategoryEvent value)
         filterExpenseByCategory,
   }) {
@@ -690,8 +680,7 @@ class _$FilterExpenseByCategoryEvent implements FilterExpenseByCategoryEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddExpenseEvent value)? addExpense,
     TResult? Function(RemoveExpenseEvent value)? removeExpense,
-    TResult? Function(FilterExpenseByDateEvent value)?
-        filterExpenseByDateTime,
+    TResult? Function(FilterExpenseByDateEvent value)? filterExpenseByDate,
     TResult? Function(FilterExpenseByCategoryEvent value)?
         filterExpenseByCategory,
   }) {
@@ -703,8 +692,7 @@ class _$FilterExpenseByCategoryEvent implements FilterExpenseByCategoryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddExpenseEvent value)? addExpense,
     TResult Function(RemoveExpenseEvent value)? removeExpense,
-    TResult Function(FilterExpenseByDateEvent value)?
-        filterExpenseByDateTime,
+    TResult Function(FilterExpenseByDateEvent value)? filterExpenseByDate,
     TResult Function(FilterExpenseByCategoryEvent value)?
         filterExpenseByCategory,
     required TResult orElse(),
