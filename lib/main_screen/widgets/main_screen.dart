@@ -1,4 +1,4 @@
-import 'package:expenses/main_screen/widgets/bottom_sheent_content.dart';
+import 'package:expenses/main_screen/widgets/bottom_sheet_content.dart';
 import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab.dart';
 import 'package:expenses/theme/export.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +32,7 @@ class MainScreen extends StatelessWidget {
                   color: Color(0x1F77839A),
                 ),
               ),
-              child: Icon(Icons.add),
+              // child: Icon(Icons.add),
             ),
           )
         ],

@@ -1,4 +1,4 @@
-import 'package:expenses/main_screen/main_screen.dart';
+import 'package:expenses/main_screen/widgets/main_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

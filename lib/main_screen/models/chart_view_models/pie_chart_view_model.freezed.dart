@@ -16,9 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PieChartViewModel {
-  double get totalAmount => throw _privateConstructorUsedError;
-  List<PieChartViewModelItemViewModel> get items =>
-      throw _privateConstructorUsedError;
+  List<PieChartItemViewModel> get items => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PieChartViewModelCopyWith<PieChartViewModel> get copyWith =>
@@ -31,7 +29,7 @@ abstract class $PieChartViewModelCopyWith<$Res> {
           PieChartViewModel value, $Res Function(PieChartViewModel) then) =
       _$PieChartViewModelCopyWithImpl<$Res, PieChartViewModel>;
   @useResult
-  $Res call({double totalAmount, List<PieChartViewModelItemViewModel> items});
+  $Res call({List<PieChartItemViewModel> items});
 }
 
 /// @nodoc
@@ -47,18 +45,13 @@ class _$PieChartViewModelCopyWithImpl<$Res, $Val extends PieChartViewModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? totalAmount = null,
     Object? items = null,
   }) {
     return _then(_value.copyWith(
-      totalAmount: null == totalAmount
-          ? _value.totalAmount
-          : totalAmount // ignore: cast_nullable_to_non_nullable
-              as double,
       items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<PieChartViewModelItemViewModel>,
+              as List<PieChartItemViewModel>,
     ) as $Val);
   }
 }
@@ -71,7 +64,7 @@ abstract class _$$_PieChartViewModelCopyWith<$Res>
       __$$_PieChartViewModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double totalAmount, List<PieChartViewModelItemViewModel> items});
+  $Res call({List<PieChartItemViewModel> items});
 }
 
 /// @nodoc
@@ -85,18 +78,13 @@ class __$$_PieChartViewModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? totalAmount = null,
     Object? items = null,
   }) {
     return _then(_$_PieChartViewModel(
-      totalAmount: null == totalAmount
-          ? _value.totalAmount
-          : totalAmount // ignore: cast_nullable_to_non_nullable
-              as double,
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<PieChartViewModelItemViewModel>,
+              as List<PieChartItemViewModel>,
     ));
   }
 }
@@ -104,17 +92,13 @@ class __$$_PieChartViewModelCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PieChartViewModel extends _PieChartViewModel {
-  const _$_PieChartViewModel(
-      {required this.totalAmount,
-      required final List<PieChartViewModelItemViewModel> items})
+  const _$_PieChartViewModel({required final List<PieChartItemViewModel> items})
       : _items = items,
         super._();
 
+  final List<PieChartItemViewModel> _items;
   @override
-  final double totalAmount;
-  final List<PieChartViewModelItemViewModel> _items;
-  @override
-  List<PieChartViewModelItemViewModel> get items {
+  List<PieChartItemViewModel> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
@@ -122,7 +106,7 @@ class _$_PieChartViewModel extends _PieChartViewModel {
 
   @override
   String toString() {
-    return 'PieChartViewModel(totalAmount: $totalAmount, items: $items)';
+    return 'PieChartViewModel(items: $items)';
   }
 
   @override
@@ -130,14 +114,12 @@ class _$_PieChartViewModel extends _PieChartViewModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PieChartViewModel &&
-            (identical(other.totalAmount, totalAmount) ||
-                other.totalAmount == totalAmount) &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, totalAmount, const DeepCollectionEquality().hash(_items));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
@@ -149,15 +131,12 @@ class _$_PieChartViewModel extends _PieChartViewModel {
 
 abstract class _PieChartViewModel extends PieChartViewModel {
   const factory _PieChartViewModel(
-          {required final double totalAmount,
-          required final List<PieChartViewModelItemViewModel> items}) =
+          {required final List<PieChartItemViewModel> items}) =
       _$_PieChartViewModel;
   const _PieChartViewModel._() : super._();
 
   @override
-  double get totalAmount;
-  @override
-  List<PieChartViewModelItemViewModel> get items;
+  List<PieChartItemViewModel> get items;
   @override
   @JsonKey(ignore: true)
   _$$_PieChartViewModelCopyWith<_$_PieChartViewModel> get copyWith =>
