@@ -12,6 +12,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
+    
     return Padding(
       padding: EdgeInsets.fromLTRB(
         0,
@@ -41,8 +42,9 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 Align(
                   alignment: Alignment.topRight,
                   child: GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: Icon(Icons.close)),
+                    onTap: () => Navigator.pop(context),
+                    // child: Icon(Icons.close),
+                  ),
                 ),
               ],
             ),
@@ -52,9 +54,8 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                   Row(
                     children: [
                       Text('Category'),
-                  
                     ],
-                  ),  
+                  ),
                 ],
               ),
             ),

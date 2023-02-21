@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 enum ExpenseCategory {
   food,
-  comunal,
+  communal,
   transportation,
 }
 
@@ -12,7 +12,7 @@ extension ExpenseCategoryExtension on ExpenseCategory {
     switch (this) {
       case ExpenseCategory.food:
         return accentColor1;
-      case ExpenseCategory.comunal:
+      case ExpenseCategory.communal:
         return accentColor2;
       default:
         return accentColor3;

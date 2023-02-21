@@ -12,7 +12,12 @@ part 'main_screen_bloc.freezed.dart';
 class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   var allExpenses = <ExpenseViewModel>[];
 
-  MainScreenBloc() : super(MainScreenState.initial()) {
+  MainScreenBloc()
+      : super(
+          MainScreenState.initial(
+            mainScreenViewModel: MainScreenViewModel(expenses: []),
+          ),
+        ) {
     on<AddExpenseEvent>(_addExpenseEvent);
     on<RemoveExpenseEvent>(_handleRemoveExpenseEvent);
     on<FilterExpenseByCategoryEvent>(_handleFilterExpenseByCategoryEvent);
@@ -22,22 +27,34 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   _addExpenseEvent(
     AddExpenseEvent event,
     Emitter emit,
-  ) {}
+  ) {
+    List<ExpenseViewModel> expenses = [
+      ...state.mainScreenViewModel.expenses
+    ];
+
+    expenses.add(event.expenseViewModel);
+
+    emit(
+      MainScreenLoadedState(
+        mainScreenViewModel: MainScreenViewModel(
+          expenses: expenses,
+        ),
+      ),
+    );
+  }
 
   void _handleRemoveExpenseEvent(
     RemoveExpenseEvent event,
     Emitter<MainScreenState> emit,
   ) {
     var expenses = <ExpenseViewModel>[];
-    double allAmount = 0.0;
 
     if (state is MainScreenLoadedState) {
       final currentState = state as MainScreenLoadedState;
 
-      allAmount = currentState.mainScreenViewModel.allAmount;
 
       expenses.addAll(
-        currentState.mainScreenViewModel.expenses,
+        state.mainScreenViewModel.expenses,
       );
 
       expenses.removeWhere(
@@ -52,7 +69,6 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     emit(
       MainScreenState.loaded(
         mainScreenViewModel: MainScreenViewModel(
-          allAmount: allAmount,
           expenses: expenses,
         ),
       ),
@@ -64,12 +80,9 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     Emitter<MainScreenState> emit,
   ) {
     var expenses = <ExpenseViewModel>[];
-    double allAmount = 0.0;
 
     if (state is MainScreenLoadedState) {
       final currentState = state as MainScreenLoadedState;
-
-      allAmount = currentState.mainScreenViewModel.allAmount;
 
       allExpenses.forEach(
         (element) {
@@ -83,7 +96,6 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     emit(
       MainScreenState.loaded(
         mainScreenViewModel: MainScreenViewModel(
-          allAmount: allAmount,
           expenses: expenses,
         ),
       ),
@@ -95,12 +107,9 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     Emitter<MainScreenState> emit,
   ) {
     var expenses = <ExpenseViewModel>[];
-    double allAmount = 0.0;
 
     if (state is MainScreenLoadedState) {
       final currentState = state as MainScreenLoadedState;
-
-      allAmount = currentState.mainScreenViewModel.allAmount;
 
       if (event.filterParam == FilterParam.today) {
         final currentDate = DateTime.now();
@@ -134,7 +143,6 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     emit(
       MainScreenState.loaded(
         mainScreenViewModel: MainScreenViewModel(
-          allAmount: allAmount,
           expenses: expenses,
         ),
       ),

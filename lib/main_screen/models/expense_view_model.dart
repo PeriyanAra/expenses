@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:expenses/main_screen/enums/expense_category.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

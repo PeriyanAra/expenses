@@ -1,3 +1,4 @@
+import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab_bar_item.dart';
 import 'package:expenses/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,8 @@ class MainTabBar extends StatelessWidget {
     required this.height,
   }) : super(key: key);
 
+  static final tabNames = ['List', 'LineChart', 'BarChart', 'PieChart'];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,70 +23,21 @@ class MainTabBar extends StatelessWidget {
       width: width,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: Colors.grey,
+        color: secondaryColor,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(
-            onTap: () {
-              tabController.animateTo(0);
-            },
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color:
-                    tabController.index == 0 ? Colors.grey : transparent,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Text('List'),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              tabController.animateTo(1);
-            },
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                color:
-                    tabController.index == 1 ? Colors.grey : Colors.transparent,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Text('List1'),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              tabController.animateTo(2);
-            },
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                color:
-                    tabController.index == 2 ? Colors.grey : Colors.transparent,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Text('List2'),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              tabController.animateTo(3);
-            },
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                color:
-                    tabController.index == 3 ? Colors.grey : Colors.transparent,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Text('List3'),
-            ),
-          ),
-        ],
+        children: List.generate(
+          tabController.length,
+          (index) {
+            return MainTabBarItem(
+              index: index,
+              tabController: tabController,
+              tabBarName: tabNames[index],
+            );
+          },
+        ),
       ),
     );
   }
