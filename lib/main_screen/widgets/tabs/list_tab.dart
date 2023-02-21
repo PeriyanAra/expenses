@@ -15,6 +15,7 @@ class _ListTabState extends State<ListTab> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
       itemCount: mockMainScreenViewModel.expenses.length,
       itemBuilder: (context, index) {
         final expense = mockMainScreenViewModel.expenses[index];
@@ -45,49 +46,41 @@ class _ListTabState extends State<ListTab> {
             SizedBox(
               height: 10,
             ),
-            Card(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: secondaryColor,
-                  borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: accentColor1.withOpacity(0.2),
-                      blurRadius: 20,
-                    ),
-                  ],
-                ),
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * .6,
-                              child: Text(
-                                expense.name,
-                                style: appTheme.textTheme.title1,
-                                overflow: TextOverflow.clip,
-                              ),
+            Container(
+              decoration: BoxDecoration(
+                color: secondaryColor,
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
+              ),
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * .6,
+                            child: Text(
+                              expense.name,
+                              style: appTheme.textTheme.title1,
+                              overflow: TextOverflow.clip,
                             ),
-                            Text(
-                              expense.category.name,
-                              style: appTheme.textTheme.body,
-                            ),
-                          ],
-                        ),
-                        Text(
-                          '${expense.amount}\$',
-                          style: appTheme.textTheme.body,
-                        )
-                      ],
-                    )
-                  ],
-                ),
+                          ),
+                          Text(
+                            expense.category.name,
+                            style: appTheme.textTheme.body,
+                          ),
+                        ],
+                      ),
+                      Text(
+                        '${expense.amount}\$',
+                        style: appTheme.textTheme.body,
+                      )
+                    ],
+                  )
+                ],
               ),
             ),
           ],

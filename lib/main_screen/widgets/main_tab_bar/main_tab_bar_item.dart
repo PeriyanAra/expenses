@@ -19,10 +19,13 @@ class MainTabBarItem extends StatelessWidget {
         tabController.animateTo(index);
       },
       child: Container(
+        constraints: BoxConstraints(minWidth: 80),
         padding: EdgeInsets.all(10.0),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: tabController.index == index ? Colors.grey : transparent,
+          color: tabController.index == index
+              ? white.withOpacity(0.2)
+              : transparent,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
