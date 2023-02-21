@@ -1,12 +1,10 @@
-import 'dart:developer';
-
 import 'package:expenses/main_screen/enums/expense_category.dart';
 import 'package:expenses/main_screen/models/chart_view_models/line_chart_item_group_view_model.dart';
 import 'package:expenses/main_screen/models/chart_view_models/line_chart_view_model.dart';
-import 'package:expenses/theme/app_colors.dart';
 import 'package:expenses/theme/export.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CustomLineChart extends StatefulWidget {
   final LineChartViewModel viewModel;
@@ -22,9 +20,16 @@ class CustomLineChart extends StatefulWidget {
 
 class _CustomLineChartState extends State<CustomLineChart> {
   late List<LineChartBarData> lineChartBarData = [];
+  late List<String> titles;
 
   @override
   void initState() {
+    titles = widget.viewModel.dates
+        .map(
+          (e) => DateFormat('MMM dd').format(e),
+        )
+        .toList();
+
     lineChartBarData = widget.viewModel.itemGroups
         .map((e) => createLineChartBarData(e))
         .toList();
@@ -37,7 +42,7 @@ class _CustomLineChartState extends State<CustomLineChart> {
   ) {
     final List<FlSpot> spots = group.items
         .map((e) => FlSpot(
-              e.date.day.toDouble(),
+              group.items.indexOf(e).toDouble(),
               e.value,
             ))
         .toList();
@@ -50,7 +55,11 @@ class _CustomLineChartState extends State<CustomLineChart> {
       dotData: FlDotData(show: false),
       belowBarData: BarAreaData(
         show: false,
-        color: const Color(0x00aa4cfc),
+        color: const Color(0x00000000),
+      ),
+      aboveBarData: BarAreaData(
+        show: false,
+        color: const Color(0x00000000),
       ),
       spots: spots,
     );
@@ -73,7 +82,7 @@ class _CustomLineChartState extends State<CustomLineChart> {
               sideTitles: SideTitles(
                 showTitles: true,
                 reservedSize: 32,
-                interval: 1,
+                interval: 2,
                 getTitlesWidget: bottomTitleWidgets,
               ),
             ),
@@ -87,8 +96,8 @@ class _CustomLineChartState extends State<CustomLineChart> {
               sideTitles: SideTitles(
                 getTitlesWidget: leftTitleWidgets,
                 showTitles: true,
-                interval: 50,
-                reservedSize: 40,
+                interval: 100,
+                reservedSize: 60,
               ),
             ),
           ),
@@ -103,7 +112,7 @@ class _CustomLineChartState extends State<CustomLineChart> {
           ),
           lineBarsData: lineChartBarData,
           minX: 0,
-          maxX: widget.viewModel.dates.length.toDouble(),
+          maxX: (widget.viewModel.dates.length.toDouble()) * 2 - 1,
           maxY: widget.viewModel.maximumExpenseAmount,
           minY: 0,
         ),
@@ -112,33 +121,23 @@ class _CustomLineChartState extends State<CustomLineChart> {
     );
   }
 
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    final style = appTheme.textTheme.caption2.copyWith(
-      color: secondaryTextColor,
-      fontWeight: FontWeight.w600,
-    );
+  Widget bottomTitleWidgets(double index, TitleMeta meta) {
+    if ((index / 2) <= (widget.viewModel.dates.length - 1)) {
+      Widget text = Text(
+        titles[index ~/ 2],
+        style: appTheme.textTheme.caption2.copyWith(
+          color: secondaryTextColor,
+          fontWeight: FontWeight.w600,
+        ),
+      );
 
-    Widget text;
-    switch (value.toInt()) {
-      case 2:
-        text = Text('SEPT', style: style);
-        break;
-      case 7:
-        text = Text('OCT', style: style);
-        break;
-      case 12:
-        text = Text('DEC', style: style);
-        break;
-      default:
-        text = const Text('');
-        break;
+      return SideTitleWidget(
+        axisSide: meta.axisSide,
+        space: 10,
+        child: text,
+      );
     }
-
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      space: 10,
-      child: text,
-    );
+    return SizedBox();
   }
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
@@ -147,14 +146,15 @@ class _CustomLineChartState extends State<CustomLineChart> {
       fontWeight: FontWeight.w600,
     );
 
-    log(
-      value.toString(),
-      name: 'value',
-    );
-    return Text(
-      '$value \$',
-      style: style,
-      textAlign: TextAlign.center,
+    return Padding(
+      padding: EdgeInsets.only(
+        top: value == widget.viewModel.maximumExpenseAmount ? 10 : 0,
+      ),
+      child: Text(
+        '${value.toStringAsFixed(0)} \$',
+        style: style,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:expenses/main_screen/enums/expense_category.dart';
 import 'package:expenses/main_screen/models/chart_view_models/line_chart_item_group_view_model.dart';
 import 'package:expenses/main_screen/models/chart_view_models/line_chart_item_view_model.dart';
@@ -24,16 +26,22 @@ class LineChartViewModel with _$LineChartViewModel {
       (category) {
         final List<LineChartItemViewModel> groupItems = [];
 
-        expenses.forEach((expense) {
-          if (expense.category == category) {
-            final groupItem = LineChartItemViewModel(
-              value: expense.amount,
-              date: expense.date,
-            );
+        expenses.forEach(
+          (expense) {
+            if (expense.category == category) {
+              final groupItem = LineChartItemViewModel(
+                value: expense.amount,
+                date: expense.date,
+              );
 
-            groupItems.add(groupItem);
-          }
-        });
+              groupItems.add(groupItem);
+            }
+
+            if (expense.amount > maximumExpenseAmount) {
+              maximumExpenseAmount = expense.amount;
+            }
+          },
+        );
 
         categoryItemGroups.add(
           LineChartItemGroupViewModel(

@@ -23,7 +23,6 @@ class _CustomBarChartState extends State<CustomBarChart> {
   late List<BarChartGroupData> rawBarGroups;
   late List<BarChartGroupData> showingBarGroups;
   late List<String> titles;
-
   final double width = 7;
 
   @override
@@ -123,8 +122,6 @@ class _CustomBarChartState extends State<CustomBarChart> {
     double index,
     TitleMeta meta,
   ) {
-    ;
-
     Widget text = Text(
       titles[index.toInt()],
       style: appTheme.textTheme.caption2.copyWith(
