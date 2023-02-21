@@ -34,5 +34,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
         ),
       ),
     );
+
+    print(state.mainScreenViewModel);
   }
 }
