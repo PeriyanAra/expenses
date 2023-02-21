@@ -18,8 +18,7 @@ class _DatePickerScreenState extends State<DatePickerScreen>
   @override
   String? get restorationId => widget.restorationId;
 
-  final RestorableDateTime _selectedDate =
-      RestorableDateTime(DateTime(2022, 1, 1));
+  final RestorableDateTime _selectedDate = RestorableDateTime(DateTime.now());
   late final RestorableRouteFuture<DateTime?> _restorableDatePickerRouteFuture =
       RestorableRouteFuture<DateTime?>(
     onComplete: _selectDate,
