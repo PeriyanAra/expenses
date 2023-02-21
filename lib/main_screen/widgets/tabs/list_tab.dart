@@ -131,12 +131,7 @@ class _ListTabState extends State<ListTab> {
               );
             },
           );
-        return Center(
-          child: Text(
-            'Click + to add expenses',
-            style: appTheme.textTheme.subhead.copyWith(color: containerColor),
-          ),
-        );
+        return Container();
       },
     );
   }

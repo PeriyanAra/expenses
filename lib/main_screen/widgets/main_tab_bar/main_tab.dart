@@ -8,6 +8,7 @@ import 'package:expenses/main_screen/widgets/custom_pie_chart.dart';
 import 'package:expenses/main_screen/widgets/tabs/list_tab.dart';
 import 'package:expenses/main_screen/widgets/main_tab_bar/main_tab_bar.dart';
 import 'package:expenses/theme/app_colors.dart';
+import 'package:expenses/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -60,27 +61,62 @@ class _MainTabState extends State<MainTab> with TickerProviderStateMixin {
               Expanded(
                 child: BlocBuilder<MainScreenBloc, MainScreenState>(
                   builder: (context, state) {
-                    return TabBarView(
-                      controller: _tabController,
-                      children: [
-                        ListTab(),
-                        CustomLineChart(
-                          viewModel: LineChartViewModel.fromExpenses(
-                            state.mainScreenViewModel.expenses,
-                          ),
-                        ),
-                        CustomBarChart(
-                          viewModel: BarChartViewModel.fromExpenses(
-                            state.mainScreenViewModel.expenses,
-                          ),
-                        ),
-                        Center(
-                          child: CustomPieChart(
-                            pieChartViewModel: PieChartViewModel.fromExpenses(
+                    if (state.mainScreenViewModel.expenses.length != 0)
+                      return TabBarView(
+                        controller: _tabController,
+                        children: [
+                          ListTab(),
+                          CustomLineChart(
+                            viewModel: LineChartViewModel.fromExpenses(
                               state.mainScreenViewModel.expenses,
                             ),
                           ),
-                        )
+                          CustomBarChart(
+                            viewModel: BarChartViewModel.fromExpenses(
+                              state.mainScreenViewModel.expenses,
+                            ),
+                          ),
+                          Center(
+                            child: CustomPieChart(
+                              pieChartViewModel: PieChartViewModel.fromExpenses(
+                                state.mainScreenViewModel.expenses,
+                              ),
+                            ),
+                          )
+                        ],
+                      );
+
+                    return TabBarView(
+                      controller: _tabController,
+                      children: [
+                        Center(
+                          child: Text(
+                            'Click + to add expenses',
+                            style: appTheme.textTheme.subhead
+                                .copyWith(color: containerColor),
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            'Add expenses to show bar chart',
+                            style: appTheme.textTheme.subhead
+                                .copyWith(color: containerColor),
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            'Add expenses to show line chart',
+                            style: appTheme.textTheme.subhead
+                                .copyWith(color: containerColor),
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            'Add expenses to show pie chart',
+                            style: appTheme.textTheme.subhead
+                                .copyWith(color: containerColor),
+                          ),
+                        ),
                       ],
                     );
                   },
